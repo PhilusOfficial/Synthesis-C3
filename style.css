@@ -1,0 +1,287 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow-y: hidden;
+  background-color: #FAF8F3;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  font-family: input-mono;
+  font-weight: 300;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+.navigationContainer {
+  position: fixed;
+  top: 5vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.navigationButton {
+  font-size: 0.7vw;
+  border: none;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  border: 0.2vh solid #4CAF50;
+}
+
+#filterContainer {
+  position: fixed;
+  margin: auto;
+  transform: translateX(-0.5%);
+  width: 100%;
+  bottom: 1.5vh;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+}
+
+.checkboxContainer {
+  background-color: white;
+  border: 0.2vh solid black;
+  border-radius: 999vh;
+  display: inline-block;
+  cursor: pointer;
+  margin-left: 0.2vw;
+  margin-right: 0.2vw;
+}
+
+/*--------------------------------------------------------------------------*/
+/*Style for the text of all filters and their colors*/
+.checkboxText {
+  margin: 0.8vw;
+  font-size: 0.7vw;
+}
+
+/*--------------------------------------------------------------------------*/
+#freedom:hover {
+  background-color: #50ABE0;
+  transition: 0.4s;
+}
+
+#right:hover {
+  background-color: #C3D5E0;
+  transition: 0.4s;
+}
+
+#decentralized:hover {
+  background-color: #E02026;
+  transition: 0.4s;
+}
+
+#safe:hover {
+  background-color: #F7CBE1;
+  transition: 0.4s;
+}
+
+#data:hover {
+  background-color: #EA9FC5;
+  transition: 0.4s;
+}
+
+#alternative:hover {
+  background-color: #CADE9F;
+  transition: 0.4s;
+}
+
+#open:hover {
+  background-color: #F5EAD4;
+  transition: 0.4s;
+}
+
+#advertisement:hover {
+  background-color: #1EA75A;
+  transition: 0.4s;
+}
+
+#real:hover {
+  background-color: #96B431;
+  transition: 0.4s;
+}
+
+#free:hover {
+  background-color: #1B4C9B;
+  transition: 0.4s;
+}
+
+#uncategorized:hover {
+  background-color: gray;
+  transition: 0.4s;
+}
+
+.freedom {
+  background-color: #50ABE0;
+}
+
+.right {
+  background-color: #C3D5E0;
+}
+
+.decentralized {
+  background-color: #E02026;
+}
+
+.safe {
+  background-color: #F7CBE1;
+}
+
+.data {
+  background-color: #EA9FC5;
+}
+
+.alternative {
+  background-color: #CADE9F;
+}
+
+.open {
+  background-color: #F5EAD4;
+}
+
+.advertisement {
+  background-color: #1EA75A;
+}
+
+.real {
+  background-color: #96B431;
+}
+
+.free {
+  background-color: #1B4C9B;
+}
+
+.uncategorized {
+  background-color: gray;
+}
+
+/*--------------------------------------------------------------------------*/
+.siteContainer {
+  position:absolute;
+  padding: 0.8vh;
+  transition:1s;
+}
+
+.siteName {
+  cursor: pointer;
+  position: absolute;
+  height: 3vh;
+  font-size: 3vh;
+  font-weight: 400;
+  padding-bottom: 1vh;
+  text-decoration: underline;
+}
+
+.siteKeywords {
+  position: relative;
+  width: 30vh;
+  top: 4vh;
+  font-size: 1.8vh;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  font-size: 16px;
+  border: none;
+  opacity: 0;
+  height: 5vh;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  width: 36vh;
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  font-size: 1.6vh;
+  padding: 0.8vh;
+  padding-right: 1vh;
+  z-index: 1;
+  border: 0.2vh solid black;
+  top: 0;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.overlayBox {
+  background-color: white;
+  height: auto;
+  font-size: 1.6vh;
+  padding: 0.8vh;
+  padding-right: 1vh;
+  z-index: 1;
+  border: 0.2vh solid black;
+}
+
+.overlaySite {
+  cursor: default;
+  font-size: 3vh;
+  font-weight:400;
+  display: inline-block;
+  text-decoration: underline;
+}
+
+.overlayText {
+  margin-top: 1vh;
+  margin-bottom: 0.5vh;
+  display: inline-block;
+  font-size: 1.6vh;
+}
+
+
+
+.linkButton {
+  width: 6vh;
+  padding: 0.3vh;
+  padding-left:0.4vh;
+  padding-right:0.4vh;
+  text-decoration:none;
+  border:0.1vh solid #d1d1d1;
+  position: absolute;
+  top: 1.5vh; right: 5vh;
+  font-size: 1.6vh;
+  color:black;
+  cursor: pointer;
+}
+
+.linkButton::before {
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+
+.linkButton:hover::before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.linkButton::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  inset: 0 0 0 0;
+  background: #d1d1d1;
+  z-index: -1;
+  transition: transform .3s ease;
+}
