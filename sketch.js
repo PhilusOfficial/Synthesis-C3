@@ -105,7 +105,7 @@ function calculatePositionsX() {
 function calculatePositionsY() {
   for (let i = 0; i < 87; i++) {
     if (i % 2 == 0) {
-      let thisPosY = random(20, 30);
+      let thisPosY = random(25, 35);
       yPos[i] = thisPosY;
     } else {
       let thisPosY = random(60, 70);
@@ -581,7 +581,7 @@ function rearrangeSelection() {
         siteContainer.style("opacity", "0");
       }
       siteContainer.style("left", currentPosX + "vh");
-      siteContainer.style("top", currentPosY - keywordsLength / 30 + "vh");
+      siteContainer.style("top", currentPosY - keywordsLength / 40 + "vh");
       siteContainer.addClass("siteContainer");
       if (isBooting==false) {
         siteContainer.style("transform", "translateX(0vw)");
@@ -634,22 +634,24 @@ function rearrangeSelection() {
       overlaySite.parent(overlayContainer);
       overlaySite.addClass("overlaySite");
 
-      let linkBox = createDiv();
-      linkBox.parent(overlayContainer);
-      linkBox.addClass("linkButton");
-      linkBox.attribute("target", "_blank");
-
-      let linkString = createA(allWebsites[i].Link, " >");
-      linkString.parent(linkBox);
-      linkString.style("text-decoration","none");
+      let linkString = createA(allWebsites[i].Link, "");
+      linkString.parent(overlayContainer);
+      linkString.addClass("linkButton");
       linkString.attribute("target", "_blank");
 
       let siteIco = createImg("favicons/favicon"+i+".ico", "?");
-      siteIco.parent(linkBox);
-      siteIco.style("height","2.8vh");
+      siteIco.parent(linkString);
+      siteIco.style("width","3.5vh");
       siteIco.style("position","absolute");
       siteIco.style("top","0");
-      siteIco.style("left","1.5vh");
+      siteIco.style("right","0vh");
+
+      let mouse = createImg("favicons/0mouse.png", "?");
+      mouse.parent(linkString);
+      mouse.style("height","2.5vh");
+      mouse.style("position","absolute");
+      mouse.style("top","1.4vh");
+      mouse.style("right","3vh");
 
       let overlayText = createDiv(allWebsites[i].Payoff);
       overlayText.parent(overlayContainer);

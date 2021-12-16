@@ -30,11 +30,14 @@ html::-webkit-scrollbar {
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
-  transition-duration: 0.4s;
   cursor: pointer;
   background-color: white;
   color: black;
   border: 0.2vh solid #4CAF50;
+  -webkit-transition: .27s;
+  -webkit-moz-transition: .27s;
+  -o-transition: .27s;
+  transition: .27s;
 }
 
 #filterContainer {
@@ -67,98 +70,87 @@ html::-webkit-scrollbar {
 
 /*--------------------------------------------------------------------------*/
 #freedom:hover {
-  background-color: #50ABE0;
-  transition: 0.4s;
+  background-color: #67a2f9;
 }
 
 #right:hover {
-  background-color: #C3D5E0;
-  transition: 0.4s;
+  background-color: #bcdcf7;
 }
 
 #decentralized:hover {
-  background-color: #E02026;
-  transition: 0.4s;
+  background-color: #dd3722;
 }
 
 #safe:hover {
-  background-color: #F7CBE1;
-  transition: 0.4s;
+  background-color: #ffc5e5;
 }
 
 #data:hover {
-  background-color: #EA9FC5;
-  transition: 0.4s;
+  background-color: #e8b6ff;
 }
 
 #alternative:hover {
-  background-color: #CADE9F;
-  transition: 0.4s;
+  background-color: #c3e264;
 }
 
 #open:hover {
-  background-color: #F5EAD4;
-  transition: 0.4s;
+  background-color: #b7b0ff;
 }
 
 #advertisement:hover {
-  background-color: #1EA75A;
-  transition: 0.4s;
+  background-color: #18ad71;
 }
 
 #real:hover {
-  background-color: #96B431;
-  transition: 0.4s;
+  background-color: #7fe2a9;
 }
 
 #free:hover {
-  background-color: #1B4C9B;
-  transition: 0.4s;
+  background-color: #404eff;
 }
 
 #uncategorized:hover {
   background-color: gray;
-  transition: 0.4s;
 }
 
 .freedom {
-  background-color: #50ABE0;
+  background-color: #67a2f9;
 }
 
 .right {
-  background-color: #C3D5E0;
+  background-color: #bcdcf7;
 }
 
 .decentralized {
-  background-color: #E02026;
+  background-color: #dd3722;
 }
 
 .safe {
-  background-color: #F7CBE1;
+  background-color: #ffc5e5;
 }
 
 .data {
-  background-color: #EA9FC5;
+  background-color: #e8b6ff;
 }
 
 .alternative {
-  background-color: #CADE9F;
+  background-color: #c3e264;
 }
 
 .open {
-  background-color: #F5EAD4;
+  background-color: #b7b0ff;
 }
 
 .advertisement {
-  background-color: #1EA75A;
+  background-color: #18ad71;
 }
 
 .real {
-  background-color: #96B431;
+  background-color: #7fe2a9;
 }
 
 .free {
-  background-color: #1B4C9B;
+  background-color: #404eff;
 }
 
 .uncategorized {
@@ -169,7 +161,10 @@ html::-webkit-scrollbar {
 .siteContainer {
   position:absolute;
   padding: 0.8vh;
-  transition:1s;
+  -webkit-transition: 1s;
+  -webkit-moz-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
 }
 
 .siteName {
@@ -184,7 +179,7 @@ html::-webkit-scrollbar {
 
 .siteKeywords {
   position: relative;
-  width: 30vh;
+  width: 32vh;
   top: 4vh;
   font-size: 1.8vh;
 }
@@ -254,34 +249,9 @@ html::-webkit-scrollbar {
 
 .linkButton {
   width: 6vh;
-  padding: 0.3vh;
-  padding-left:0.4vh;
-  padding-right:0.4vh;
+  height: 4vh;
   text-decoration:none;
-  border:0.1vh solid #d1d1d1;
   position: absolute;
-  top: 1.5vh; right: 5vh;
-  font-size: 1.6vh;
-  color:black;
+  top: 1vh; right: 1.5vh;
   cursor: pointer;
-}
-
-.linkButton::before {
-  transform: scaleX(0);
-  transform-origin: bottom right;
-}
-
-.linkButton:hover::before {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-
-.linkButton::before {
-  content: " ";
-  display: block;
-  position: absolute;
-  inset: 0 0 0 0;
-  background: #d1d1d1;
-  z-index: -1;
-  transition: transform .3s ease;
 }
