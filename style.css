@@ -13,31 +13,74 @@ html::-webkit-scrollbar {
   display: none;
 }
 
-.navigationContainer {
+.container {
+  height: 2vw;
+  background-color: #f9f8f7;
   position: fixed;
-  top: 5vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  width:100vw;
+  padding: 1vw;
+  font-family: neue-haas-unica;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1.2vw;
 }
 
-.navigationButton {
-  font-size: 0.7vw;
-  border: none;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
+#restart {
+  left:2vw;
+  position: absolute;
+  height: 3.7vh;
+  width: 4.5vw;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1vw;
+  border-radius: 3vw;
   background-color: white;
+  border: 0.1vw solid black;
+  outline: none;
+}
+
+#restart:hover {
+  background-color: grey;
+}
+
+#navigo {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left:50%;
+  transform: translate(-50%, 0);
+}
+
+a {
   color: black;
-  border: 0.2vh solid #4CAF50;
-  -webkit-transition: .27s;
-  -webkit-moz-transition: .27s;
-  -o-transition: .27s;
-  transition: .27s;
+  text-decoration: none;
+}
+.reference {
+  padding-left: 1.5vw;
+  padding-right: 1.5vw;
+}
+
+#catalogue::after {
+  width: 100%;
+}
+
+.reference::after {
+  content: '';
+  display: block;
+  width: 0%;
+  height: 0.1vw;
+  background: black;
+  position: relative;
+  top: 3%;
+  z-index: 1;
+  -webkit-transition: width 0.5s;
+  -webkit-moz-transition: width 0.5s;
+  -o-transition: width 0.5s;
+  transition: width 0.5s;
+}
+
+.reference:hover:after {
+  width: 100%;
 }
 
 #filterContainer {
@@ -159,7 +202,7 @@ html::-webkit-scrollbar {
 
 /*--------------------------------------------------------------------------*/
 .siteContainer {
-  position:absolute;
+  position: absolute;
   padding: 0.8vh;
   -webkit-transition: 1s;
   -webkit-moz-transition: 1s;
@@ -233,7 +276,7 @@ html::-webkit-scrollbar {
 .overlaySite {
   cursor: default;
   font-size: 3vh;
-  font-weight:400;
+  font-weight: 400;
   display: inline-block;
   text-decoration: underline;
 }
@@ -245,13 +288,12 @@ html::-webkit-scrollbar {
   font-size: 1.6vh;
 }
 
-
-
 .linkButton {
   width: 6vh;
   height: 4vh;
-  text-decoration:none;
+  text-decoration: none;
   position: absolute;
-  top: 1vh; right: 1.5vh;
+  top: 1vh;
+  right: 1.5vh;
   cursor: pointer;
 }

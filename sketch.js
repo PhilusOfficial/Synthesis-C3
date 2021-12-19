@@ -648,7 +648,7 @@ function rearrangeSelection() {
 
       let mouse = createImg("favicons/0mouse.png", "?");
       mouse.parent(linkString);
-      mouse.style("height","2.5vh");
+      mouse.style("height","2vh");
       mouse.style("position","absolute");
       mouse.style("top","1.4vh");
       mouse.style("right","3vh");
