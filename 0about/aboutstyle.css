@@ -599,6 +599,11 @@ h1{
   width: 40vw;
 }
 
+.video2 video {
+  position: absolute;
+  width: 40vw;
+}
+
 .p2 {
   position: absolute;
   top: 47vw;
