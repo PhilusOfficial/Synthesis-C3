@@ -328,7 +328,6 @@ function textsDown() {
 function showVideo() {
   if(text4Pos<-5 && !hasSkippedVideo) {
     video.style("opacity", "1");
-    video.style("display", "block");
     if (hoverStarted) {
 
       video.showControls();
