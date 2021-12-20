@@ -1,664 +1,358 @@
-const scrollContainer = document.querySelector("html");
+let vw;
+let vh;
+let paroleDiv;
+let introDiv;
+let displayedWords;
 
-scrollContainer.addEventListener("wheel", (evt) => {
-  evt.preventDefault();
-  scrollContainer.scrollLeft += evt.deltaY;
-});
+let finalWords;
+let finalTitle;
+let finalTitleContainer;
+let finalTitleQuote;
 
-//-----------------------------------------------------------------------------------------------------------------------------------------------------
-let freedomAll;
-let rightAll;
-let decentralizedAll;
-let safeAll;
-let dataAll;
-let alternativeAll;
-let openAll;
-let advertisementAll;
-let realAll;
-let freeAll;
-let uncategorizedAll;
+let instructions;
+let itsTime = false;
+let index = 0;
+let button;
+let scrollAvailable = false;
+let hasSkippedGame = false;
+let hasSkippedVideo = false;
+let wordsAppeared = false;
+let scrollPoint = 0;
+let video;
+let videoContainer;
+let loadedVideo = false;
+let deletedN=0;
+let titleDisappeared = false;
+let hoverStarted = false;
+let startButton;
+let startButtonContainer;
 
-let freedomSelected = true;
-let rightSelected = true;
-let decentralizedSelected = true;
-let safeSelected = true;
-let dataSelected = true;
-let alternativeSelected = true;
-let openSelected = true;
-let advertisementSelected = true;
-let realSelected = true;
-let freeSelected = true;
+let text1, text2, text3, text4;
+let text1Pos, text2Pos, text3Pos, text4Pos;
+let text1Initial, text2Initial, text3Initial, text4Initial;
+let text1Final, text2Final, text3Final, text4Final;
 
-var allWebsites;
-var xPos = [];
-var yPos = [];
-var selected = [];
-let spacing;
-let isBooting = true;
+let speed = 5;
 
-let freedomBox;
-let rightBox;
-let decentralizedBox;
-let safeBox;
-let dataBox;
-let alternativeBox;
-let openBox;
-let advertisementBox;
-let realBox;
-let freeBox;
-let uncategorizedBox;
+let colors = ["6eb1f4", "d85652", "bcdcf7", "ffc5e5", "e8b6ff", "c3e264", "a698f4", "18ad71", "7fe2a9", "647eff"];
+//var getNewRandomColor;
 
-let favicons = [];
-//-----------------------------------------------------------------------------------------------------------------------------------------------------
-function preload() {
-  allWebsites = loadJSON("websites.json");
-  for (let i=0; i<3; i++) {
-    favicons[i]= loadImage("favicons/favicon"+i+".ico");
-  }
-}
+var words = ["authenticity", "free", "speech ", "no", "analytics", "privacy", "you do you", "your thinking", "no spying", "end-to-end encryption", "fair", "community owned", "love", "decentralization", "meaningful connection", "off", "not approved offensive behaviour", "privately organized", "open platform", "free flow of information", "(vs) censorship", "authentic human connection", "free thought", "the", "telegram", "app.net", "ownership and control of your data", "uncesored self expression", "secure messaging", "healthy user experience", "indipendent", "grid", "(vs) politically censorship", "authentic expression", "(vs) sell our information", "a place for you", "freedom of expression and association", "no premium costs", "open, free, and honest global conversation", "self-hosted", "share positive", "youtube", "(vs) feed that mines your attention", "blockchain technology", "connecting free and indepent community", "don't break any laws", "expression matters", "no stealing your data", "complexity", "(vs) cancel culture", "empowers you to protect your identity", "flourish express ideas freely", "interconnected", "more private than Facebook", "no cookies", "(vs) decentralized platform", "(vs) limited state/removed/self censored videos", "ethereum blockchain", "no tracking", "open", "personal data", "respectfull", "safe space", "twitter", "users accountable", "your friends for real", "own and control personal information", "express yourself openly", "decentralized network of indipendent operated servers", "(vs) censor our speech", "common webserver techonology", "for humans not algorithms", "instagram", "open conversation", "politically unbiased", "own your conversation", "(vs) survaillance", "can't delete/moderate/block/ban", "decentralized identity", "distributed", "not for sale", "(vs) addiction", "build real-world connection", "matrix", "right to privacy", "sense of belonging", "(vs) platform fees", "code of cunduction", "groupme", "have their voices heard", "no fear of being deplatformed", "take back your data", "you own your data", "self expression", "free to express", "gnu social", "freedom", "data stored forever on a distributed data source", "(vs) selling data", "creative freedom", "fairness", "true ownership of online identity", "whatsapp", "(vs) censor", "back in your hands", "(vs) digital survaillance", "decentralized", "individual liberty", "no stealing your data", "privately", "secure space", "safely", "(vs) violating privacy"];
 
 function setup() {
-  spacing = 20;
-  sleep(1000).then(function() {isBooting=false});
-
   noCanvas();
-  calculatePositionsX();
-  calculatePositionsY();
-  rearrangeSelection();
+  finalTitleContainer = select(".finalTitleContainer");
+  finalTitle = select(".finalTitle");
+  finalTitleQuote = select(".finalTitleQuote");
 
-  freedomBox = select('#freedom');
-  rightBox = select('#right');
-  decentralizedBox = select('#decentralized');
-  safeBox = select('#safe');
-  dataBox = select('#data');
-  alternativeBox = select('#alternative');
-  openBox = select('#open');
-  advertisementBox = select('#advertisement');
-  realBox = select('#real');
-  freeBox = select('#free');
-  uncategorizedBox = select('#uncategorized');
+  text1 = select("#text1");
+  text2 = select("#text2");
+  text3 = select("#text3");
+  text4 = select("#text4");
 
-  freedomBox.mousePressed(switchFreedom);
-  rightBox.mousePressed(switchRight);
-  decentralizedBox.mousePressed(switchDecentralized);
-  safeBox.mousePressed(switchSafe);
-  dataBox.mousePressed(switchData);
-  alternativeBox.mousePressed(switchAlternative);
-  openBox.mousePressed(switchOpen);
-  advertisementBox.mousePressed(switchAdvertisement);
-  realBox.mousePressed(switchReal);
-  freeBox.mousePressed(switchFree);
-  uncategorizedBox.mousePressed(switchUncategorized);
-}
+  text1Initial=115;
+  text2Initial=130;
+  text3Initial=150;
+  text4Initial=165;
 
-function draw() {}
+  text1Final=15;
+  text2Final=30;
+  text3Final=50;
+  text4Final=65;
 
-//-----------------------------------------------------------------------------------------------------------------------------------------------------
+  text1Final2=15-100;
+  text2Final2=30-100;
+  text3Final2=50-100;
+  text4Final2=65-100;
 
-function calculatePositionsX() {
-  for (let i = 0; i < 87; i++) {
-    let thisPosX = 10 + spacing * i;
-    xPos[i] = thisPosX;
-  }
-}
+  text1Pos = text1Initial;
+  text2Pos = text2Initial;
+  text3Pos = text3Initial;
+  text4Pos = text4Initial;
 
-function calculatePositionsY() {
-  for (let i = 0; i < 87; i++) {
-    if (i % 2 == 0) {
-      let thisPosY = random(25, 35);
-      yPos[i] = thisPosY;
+  video=select(".video");
+  video.onended(startFunction);
+  videoContainer = select("#videoContainer");
+  instructions = select("#instructions");
+
+  var rColor = random(colors);
+  button = select("#scrolldown");
+  button.mousePressed(startFunction);
+  button.style("background-color", "#" + rColor);
+
+  startButton = select("#enter");
+  startButtonContainer = select(".buttonContainer");
+
+  paroleDiv = select("#keywordsContainer");
+  paroleDiv.style("background-color", "#" + rColor);
+
+  for (let i = 0; i < words.length; i++) {
+    let elemento = createP(words[i]);
+    elemento.parent(paroleDiv);
+    elemento.addClass("elementino");
+
+
+    if (words[i] != "off" && words[i] != "the" && words[i] != "grid") {
+      elemento.mouseOver(deleteWord);
     } else {
-      let thisPosY = random(60, 70);
-      yPos[i] = thisPosY;
+      elemento.addClass("toKeep");
     }
   }
-}
-
-function sleep(millisecondsDuration)
-{
-  return new Promise((resolve) => {
-    setTimeout(resolve, millisecondsDuration);
-  })
-}
-
-//-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-function switchFreedom() {
-  freedomBox.toggleClass("freedom");
-  let allThings = selectAll(".siteContainer");
-
-  if (!selected.includes("freedom")) {
-    selected[selected.length] = "freedom";
-    freedomSelected = false;
-    for (let i=0; i<allThings.length; i++) {
-      allThings[i].style("opacity", 0);
-      allThings[i].style("transform", "translateX(100vw)");
-    }
-    sleep(600).then(rearrangeSelection);
-  } else {
-    for (let i = 0; i < selected.length; i++) {
-      if (selected[i] == "freedom") {
-        selected.splice(i, 1);
-        freedomSelected = true;
-
-        for (let i=0; i<allThings.length; i++) {
-          allThings[i].style("opacity", 0);
-          allThings[i].style("transform", "translateX(100vw)");
-        }
-        sleep(500).then(rearrangeSelection);
-      }
-    }
-  }
-
+  displayedWords = selectAll(".elementino");
+  finalWords = selectAll(".toKeep");
 
 
 }
 
-//-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-function switchRight() {
-  let allThings = selectAll(".siteContainer");
-  rightBox.toggleClass("right");
-  if (!selected.includes("right")) {
-    selected[selected.length] = "right";
-    rightSelected = false;
-    for (let i=0; i<allThings.length; i++) {
-      allThings[i].style("opacity", 0);
-      allThings[i].style("transform", "translateX(100vw)");
+function draw() {
+  if (itsTime && index < words.length - 1) {
+    if (!displayedWords[index].hasClass("toKeep")) {
+      displayedWords[index].style("opacity", "0");
     }
-    sleep(600).then(rearrangeSelection);
-  } else {
-    for (let i = 0; i < selected.length; i++) {
-      if (selected[i] == "right") {
-        selected.splice(i, 1);
-        rightSelected = true;
-        for (let i=0; i<allThings.length; i++) {
-          allThings[i].style("opacity", 0);
-          allThings[i].style("transform", "translateX(100vw)");
-        }
-        sleep(500).then(rearrangeSelection);
-      }
-    }
+    index++;
   }
+
+  text1.style("top", text1Pos + "vh");
+  text2.style("top", text2Pos + "vh");
+  text3.style("top", text3Pos + "vh");
+  text4.style("top", text4Pos + "vh");
+
+  //checkBoundaries();
+}
+
+function checkBoundaries() {
+  if (text1Pos < text1Final || text1Pos > text1Initial) {
+    text1Pos = text1Final;
+  }
+  if (text2Pos < text2Final || text2Pos > text2Initial) {
+    text2Pos = text2Final;
+  }
+  if (text3Pos < text3Final || text3Pos > text3Initial) {
+    text3Pos = text3Final;
+  }
+  if (text4Pos < text4Final || text4Pos > text4Initial) {
+    text4Pos = text4Final;
+  }
+}
+
+//----------------------------------------------------------------------------------------------
+function deleteWord() {
+  this.style("opacity", "0");
+  deletedN++;
+  if(deletedN>36&&!hoverStarted) {
+    startFunction();
+    hoverStarted=true;
+  }
+}
+
+function startFunction() {
+  if (!hasSkippedVideo && hasSkippedGame) {
+    video.style("opacity", "0");
+    setTimeout(function() {video.remove();}, 500);
+    button.addClass("removeEvents");
+    button.html("");
+    showInstructions();
+    hasSkippedVideo=true;
+  }
+
+  if (!hasSkippedGame) {
+    button.addClass("removeEvents");
+    button.html("");
+    itsTime = true;
+    finalWords[0].style("transition", ".5s");
+    finalWords[1].style("transition", ".5s");
+    finalWords[2].style("transition", ".5s");
+    hasSkippedGame = true;
+    setTimeout(hideWords, 1400-deletedN*10);
+  }
+
 
 }
 
-//-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-function switchDecentralized() {
-  let allThings = selectAll(".siteContainer");
-  decentralizedBox.toggleClass("decentralized");
-  if (!selected.includes("decentralized")) {
-    selected[selected.length] = "decentralized";
-    decentralizedSelected = false;
-    for (let i=0; i<allThings.length; i++) {
-      allThings[i].style("opacity", 0);
-      allThings[i].style("transform", "translateX(100vw)");
-    }
-    sleep(600).then(rearrangeSelection);
-  } else {
-    for (let i = 0; i < selected.length; i++) {
-      if (selected[i] == "decentralized") {
-        selected.splice(i, 1);
-        decentralizedSelected = true;
-        for (let i=0; i<allThings.length; i++) {
-          allThings[i].style("opacity", 0);
-          allThings[i].style("transform", "translateX(100vw)");
-        }
-        sleep(500).then(rearrangeSelection);
-      }
-    }
-  }
-
+function hideWords() {
+  finalWords[0].style("opacity", "0");
+  finalWords[1].style("opacity", "0");
+  finalWords[2].style("opacity", "0");
+  setTimeout(reorderWords, 600);
 }
 
-//-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-function switchSafe() {
-  let allThings = selectAll(".siteContainer");
-  safeBox.toggleClass("safe");
-  if (!selected.includes("safe")) {
-    selected[selected.length] = "safe";
-    safeSelected = false;
-    for (let i=0; i<allThings.length; i++) {
-      allThings[i].style("opacity", 0);
-      allThings[i].style("transform", "translateX(100vw)");
-    }
-    sleep(600).then(rearrangeSelection);
-  } else {
-    for (let i = 0; i < selected.length; i++) {
-      if (selected[i] == "safe") {
-        selected.splice(i, 1);
-        safeSelected = true;
-        for (let i=0; i<allThings.length; i++) {
-          allThings[i].style("opacity", 0);
-          allThings[i].style("transform", "translateX(100vw)");
-        }
-        sleep(500).then(rearrangeSelection);
-      }
-    }
-  }
-
+function reorderWords() {
+  finalTitleContainer.style("transition", ".5s");
+  finalTitleContainer.style("opacity", 1);
+  wordsAppeared = true;
+  button.html("scroll to continue");
+  setTimeout(function() {scrollAvailable = true;}, 600);
 }
 
-//-----------------------------------------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------
 
-function switchData() {
-  let allThings = selectAll(".siteContainer");
-  dataBox.toggleClass("data");
-  if (!selected.includes("data")) {
-    selected[selected.length] = "data";
-    dataSelected = false;
-    for (let i=0; i<allThings.length; i++) {
-      allThings[i].style("opacity", 0);
-      allThings[i].style("transform", "translateX(100vw)");
+function mouseWheel() {
+  if (scrollAvailable && event.deltaY > 0) {
+    if(!titleDisappeared) {
+      finalTitleContainer.style("opacity", 0);
+      titleDisappeared = true;
     }
-    sleep(600).then(rearrangeSelection);
-  } else {
-    for (let i = 0; i < selected.length; i++) {
-      if (selected[i] == "data") {
-        selected.splice(i, 1);
-        dataSelected = true;
-        for (let i=0; i<allThings.length; i++) {
-          allThings[i].style("opacity", 0);
-          allThings[i].style("transform", "translateX(100vw)");
-        }
-        sleep(500).then(rearrangeSelection);
-      }
-    }
+    text1Up();
+    text2Up();
+    text3Up();
+    text4Up();
+    textsUp();
+    showVideo();
   }
 
-}
-
-//-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-function switchAlternative() {
-  let allThings = selectAll(".siteContainer");
-  alternativeBox.toggleClass("alternative");
-  if (!selected.includes("alternative")) {
-    selected[selected.length] = "alternative";
-    alternativeSelected = false;
-    for (let i=0; i<allThings.length; i++) {
-      allThings[i].style("opacity", 0);
-      allThings[i].style("transform", "translateX(100vw)");
+  if (scrollAvailable && event.deltaY < 0) {
+    scrollPoint--;
+    if(!titleDisappeared) {
+      finalTitleContainer.style("opacity", 0);
+      titleDisappeared = true;
     }
-    sleep(600).then(rearrangeSelection);
-  } else {
-    for (let i = 0; i < selected.length; i++) {
-      if (selected[i] == "alternative") {
-        selected.splice(i, 1);
-        alternativeSelected = true;
-        for (let i=0; i<allThings.length; i++) {
-          allThings[i].style("opacity", 0);
-          allThings[i].style("transform", "translateX(100vw)");
-        }
-        sleep(500).then(rearrangeSelection);
-      }
-    }
+    text1Down();
+    text2Down();
+    text3Down();
+    text4Down();
+    textsDown();
+    hideVideo();
   }
-
 }
 
-//-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-function switchOpen() {
-  let allThings = selectAll(".siteContainer");
-  openBox.toggleClass("open");
-  if (!selected.includes("open")) {
-    selected[selected.length] = "open";
-    openSelected = false;
-    for (let i=0; i<allThings.length; i++) {
-      allThings[i].style("opacity", 0);
-      allThings[i].style("transform", "translateX(100vw)");
-    }
-    sleep(600).then(rearrangeSelection);
-  } else {
-    for (let i = 0; i < selected.length; i++) {
-      if (selected[i] == "open") {
-        selected.splice(i, 1);
-        openSelected = true;
-        for (let i=0; i<allThings.length; i++) {
-          allThings[i].style("opacity", 0);
-          allThings[i].style("transform", "translateX(100vw)");
-        }
-        sleep(500).then(rearrangeSelection);
-      }
-    }
-  }
-
-}
-
-//-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-function switchAdvertisement() {
-  let allThings = selectAll(".siteContainer");
-  advertisementBox.toggleClass("advertisement");
-  if (!selected.includes("advertisement")) {
-    selected[selected.length] = "advertisement";
-    advertisementSelected = false;
-    for (let i=0; i<allThings.length; i++) {
-      allThings[i].style("opacity", 0);
-      allThings[i].style("transform", "translateX(100vw)");
-    }
-    sleep(600).then(rearrangeSelection);
-  } else {
-    for (let i = 0; i < selected.length; i++) {
-      if (selected[i] == "advertisement") {
-        selected.splice(i, 1);
-        advertisementSelected = true;
-        for (let i=0; i<allThings.length; i++) {
-          allThings[i].style("opacity", 0);
-          allThings[i].style("transform", "translateX(100vw)");
-        }
-        sleep(500).then(rearrangeSelection);
-      }
-    }
-  }
-
-}
-
-//-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-function switchReal() {
-  let allThings = selectAll(".siteContainer");
-  realBox.toggleClass("real");
-  if (!selected.includes("real")) {
-    selected[selected.length] = "real";
-    realSelected = false;
-    for (let i=0; i<allThings.length; i++) {
-      allThings[i].style("opacity", 0);
-      allThings[i].style("transform", "translateX(100vw)");
-    }
-    sleep(600).then(rearrangeSelection);
-  } else {
-    for (let i = 0; i < selected.length; i++) {
-      if (selected[i] == "real") {
-        selected.splice(i, 1);
-        realSelected = true;
-        for (let i=0; i<allThings.length; i++) {
-          allThings[i].style("opacity", 0);
-          allThings[i].style("transform", "translateX(100vw)");
-        }
-        sleep(500).then(rearrangeSelection);
-      }
-    }
-  }
-
-}
-
-//-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-function switchFree() {
-  let allThings = selectAll(".siteContainer");
-  freeBox.toggleClass("free");
-
-  if (!selected.includes("free")) {
-    selected[selected.length] = "free";
-    freeSelected = false;
-    for (let i=0; i<allThings.length; i++) {
-      allThings[i].style("opacity", 0);
-      allThings[i].style("transform", "translateX(100vw)");
-    }
-    sleep(600).then(rearrangeSelection);
-  } else {
-    for (let i = 0; i < selected.length; i++) {
-      if (selected[i] == "free") {
-        selected.splice(i, 1);
-        freeSelected = true;
-        for (let i=0; i<allThings.length; i++) {
-          allThings[i].style("opacity", 0);
-          allThings[i].style("transform", "translateX(100vw)");
-        }
-        sleep(500).then(rearrangeSelection);
-      }
-    }
-  }
-
-}
-
-//-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-function switchUncategorized() {
-  let allThings = selectAll(".siteContainer");
-  uncategorizedBox.toggleClass("uncategorized");
-  if (!selected.includes("uncategorized")) {
-    selected[selected.length] = "uncategorized";
-    for (let i=0; i<allThings.length; i++) {
-      allThings[i].style("opacity", 0);
-      allThings[i].style("transform", "translateX(100vw)");
-    }
-    sleep(600).then(rearrangeSelection);
-  } else {
-    for (let i = 0; i < selected.length; i++) {
-      if (selected[i] == "uncategorized") {
-        selected.splice(i, 1);
-        for (let i=0; i<allThings.length; i++) {
-          allThings[i].style("opacity", 0);
-          allThings[i].style("transform", "translateX(100vw)");
-        }
-        sleep(500).then(rearrangeSelection);
-      }
-    }
-  }
-
-}
-
-//-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-function toggleColors() {
-  if (selected.length != 0) {
-    freedomAll = selectAll('.freedom');
-    rightAll = selectAll('.right');
-    decentralizedAll = selectAll('.decentralized');
-    safeAll = selectAll('.safe');
-    dataAll = selectAll('.data');
-    alternativeAll = selectAll('.alternative');
-    openAll = selectAll('.open');
-    advertisementAll = selectAll('.advertisement');
-    realAll = selectAll('.real');
-    freeAll = selectAll('.free');
-
-    for (let i = 0; i < freedomAll.length; i++) {
-      if (freedomSelected) {
-        freedomAll[i].removeClass('freedom');
-      } else {
-        freedomAll[i].addClass('freedom');
-      }
-    }
-
-    for (let i = 0; i < rightAll.length; i++) {
-      if (rightSelected) {
-        rightAll[i].removeClass('right');
-      } else {
-        rightAll[i].addClass('right');
-      }
-    }
-
-    for (let i = 0; i < decentralizedAll.length; i++) {
-      if (decentralizedSelected) {
-        decentralizedAll[i].removeClass('decentralized');
-      } else {
-        decentralizedAll[i].addClass('decentralized');
-      }
-    }
-
-    for (let i = 0; i < safeAll.length; i++) {
-      if (safeSelected) {
-        safeAll[i].removeClass('safe');
-      } else {
-        safeAll[i].addClass('safe');
-      }
-    }
-
-    for (let i = 0; i < dataAll.length; i++) {
-      if (dataSelected) {
-        dataAll[i].removeClass('data');
-      } else {
-        dataAll[i].addClass('data');
-      }
-    }
-
-    for (let i = 0; i < alternativeAll.length; i++) {
-      if (alternativeSelected) {
-        alternativeAll[i].removeClass('alternative');
-      } else {
-        alternativeAll[i].addClass('alternative');
-      }
-    }
-
-    for (let i = 0; i < openAll.length; i++) {
-      if (openSelected) {
-        openAll[i].removeClass('open');
-      } else {
-        openAll[i].addClass('open');
-      }
-    }
-
-    for (let i = 0; i < advertisementAll.length; i++) {
-      if (advertisementSelected) {
-        advertisementAll[i].removeClass('advertisement');
-      } else {
-        advertisementAll[i].addClass('advertisement');
-      }
-    }
-
-    for (let i = 0; i < realAll.length; i++) {
-      if (realSelected) {
-        realAll[i].removeClass('real');
-      } else {
-        realAll[i].addClass('real');
-      }
-    }
-
-    for (let i = 0; i < freeAll.length; i++) {
-      if (freeSelected) {
-        freeAll[i].removeClass('free');
-      } else {
-        freeAll[i].addClass('free');
-      }
+function text1Up() {
+  if (text1Pos >= text1Final && text1Pos <= text1Initial) {
+    if (text1Pos - speed < text1Final) {
+      text1Pos = text1Final;
+    } else {
+      text1Pos -= speed;
+      setTimeout(function() {finalTitleContainer.style("opacity", 0);}, 200);
     }
   }
 }
-//-----------------------------------------------------------------------------------------------------------------------------------------------------
 
-function rearrangeSelection() {
-  removeElements();
-  let currentPosX;
-  let indexX = 0;
-  let currentPosY;
-  let indexY = 0;
-  for (let i = 0; i < 87; i++) {
-    let thisCategories = [];
-
-    if (allWebsites[i].Category1 != "") {
-      thisCategories.push(allWebsites[i].Category1);
-    }
-    if (allWebsites[i].Category2 != "") {
-      thisCategories.push(allWebsites[i].Category2);
-    }
-    if (allWebsites[i].Category3 != "") {
-      thisCategories.push(allWebsites[i].Category3);
-    }
-    if (allWebsites[i].Category4 != "") {
-      thisCategories.push(allWebsites[i].Category4);
-    }
-    if (allWebsites[i].Category5 != "") {
-      thisCategories.push(allWebsites[i].Category5);
-    }
-    if (allWebsites[i].Category6 != "") {
-      thisCategories.push(allWebsites[i].Category6);
-    }
-    if (selected.every(r => thisCategories.includes(r))) {
-      let keywordsLength = allWebsites[i].Keywords.length;
-      currentPosY = yPos[indexY];
-      indexY++;
-      currentPosX = xPos[indexX];
-      indexX++;
-      //------------------------------------------------------------------------------------
-      let siteContainer = createDiv();
-      if (isBooting==false) {
-        siteContainer.style("transform", "translateX(-100vw)");
-        siteContainer.style("opacity", "0");
-      }
-      siteContainer.style("left", currentPosX + "vh");
-      siteContainer.style("top", currentPosY - keywordsLength / 40 + "vh");
-      siteContainer.addClass("siteContainer");
-      if (isBooting==false) {
-        siteContainer.style("transform", "translateX(0vw)");
-        siteContainer.style("opacity", "1");
-      }
-
-
-
-
-
-      let siteName = createDiv(allWebsites[i].Platform);
-      siteName.parent(siteContainer);
-      siteName.addClass("siteName");
-
-      //------------------------------------------------------------------------------------
-
-      let siteKeywords = createDiv(allWebsites[i].Keywords);
-      siteKeywords.parent(siteContainer);
-      siteKeywords.addClass("siteKeywords");
-      let keywordsHeight = siteKeywords.style("height");
-
-      //------------------------------------------------------------------------------------
-
-      let overlayAll = createDiv();
-      overlayAll.position(0, 0);
-      overlayAll.addClass("dropdown");
-      overlayAll.style("top", currentPosY - keywordsLength / 30 + "vh");
-      overlayAll.style("left", currentPosX + "vh");
-
-
-      let overlayInvisible = createDiv();
-      overlayInvisible.parent(overlayAll);
-      overlayInvisible.addClass("dropbtn");
-      overlayInvisible.style("width", allWebsites[i].Platform.length * 2 + "vh");
-
-      let overlayContainer = createDiv();
-      overlayContainer.parent(overlayAll);
-      overlayContainer.addClass("dropdown-content");
-      overlayContainer.style("width",allWebsites[i].Payoff.length/25+"vh");
-      overlayContainer.style("min-width","36vh");
-      overlayContainer.style("max-width","70vh");
-      if (i % 2 != 0) {
-        overlayContainer.style("top", "auto");
-        overlayContainer.style("bottom", "0");
-        overlayContainer.style("transform", "translateY(" + keywordsHeight + ")");
-
-      }
-
-      let overlaySite = createDiv(allWebsites[i].Platform);
-      overlaySite.parent(overlayContainer);
-      overlaySite.addClass("overlaySite");
-
-      let linkString = createA(allWebsites[i].Link, "");
-      linkString.parent(overlayContainer);
-      linkString.addClass("linkButton");
-      linkString.attribute("target", "_blank");
-
-      let siteIco = createImg("favicons/favicon"+i+".ico", "?");
-      siteIco.parent(linkString);
-      siteIco.style("width","3.5vh");
-      siteIco.style("position","absolute");
-      siteIco.style("top","0");
-      siteIco.style("right","0vh");
-
-      let mouse = createImg("favicons/0mouse.png", "?");
-      mouse.parent(linkString);
-      mouse.style("height","2vh");
-      mouse.style("position","absolute");
-      mouse.style("top","1.4vh");
-      mouse.style("right","3vh");
-
-      let overlayText = createDiv(allWebsites[i].Payoff);
-      overlayText.parent(overlayContainer);
-      overlayText.addClass("overlayText");
-
-
+function text1Down() {
+  if (text1Pos >= text1Final && text1Pos <= text1Initial && text2Pos == text2Initial) {
+    if (text1Pos + speed > text1Initial) {
+      text1Pos = text1Initial;
+      finalTitleContainer.style("opacity", 1);
+    } else {
+      text1Pos += speed;
     }
   }
-  toggleColors();
+}
+
+//-------------------------------------------------------------------------------titolo + scroll
+
+function text2Up() {
+  if (text2Pos >= text2Final && text2Pos <= text2Initial && text1Pos == text1Final) {
+    if (text2Pos - speed < text2Final) {
+      text2Pos = text2Final;
+    } else {
+      text2Pos -= speed;
+    }
+  }
+}
+
+function text2Down() {
+  if (text2Pos >= text2Final && text2Pos <= text2Initial && text3Pos == text3Initial) {
+    if (text2Pos + speed > text2Initial) {
+      text2Pos = text2Initial;
+    } else {
+      text2Pos += speed;
+    }
+  }
+}
+
+//-------------------------------------------------------------------------------titolo + scroll
+
+function text3Up() {
+  if (text3Pos >= text3Final && text3Pos <= text3Initial && text2Pos == text2Final) {
+    if (text3Pos - speed < text3Final) {
+      text3Pos = text3Final;
+    } else {
+      text3Pos -= speed;
+    }
+  }
+}
+
+function text3Down() {
+  if (text3Pos >= text3Final && text3Pos <= text3Initial && text4Pos == text4Initial) {
+    if (text3Pos + speed > text3Initial) {
+      text3Pos = text3Initial;
+    } else {
+      text3Pos += speed;
+    }
+  }
+}
+
+//-------------------------------------------------------------------------------titolo + scroll
+
+function text4Up() {
+  if (text4Pos >= text4Final && text4Pos <= text4Initial && text3Pos == text3Final) {
+    if (text4Pos - speed < text4Final) {
+      text4Pos = text4Final;
+    } else {
+      text4Pos -= speed;
+    }
+  }
+}
+
+function text4Down() {
+  if (text4Pos >= text4Final && text4Pos <= text4Initial) {
+    if (text4Pos + speed > text4Initial) {
+      text4Pos = text4Initial;
+    } else {
+      text4Pos += speed;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------------------------
+
+function textsUp() {
+  if (text4Pos <= text4Final) {
+      text1Pos -= speed;
+      text2Pos -= speed;
+      text3Pos -= speed;
+      text4Pos -= speed;
+    }
+}
+
+function textsDown() {
+  if (text4Pos <= text4Final && !hasSkippedVideo) {
+      text1Pos += speed;
+      text2Pos += speed;
+      text3Pos += speed;
+      text4Pos += speed;
+    }
+}
+
+//----------------------------------------------------------------------------------------
+
+function showVideo() {
+  if(text4Pos<-5 && !hasSkippedVideo) {
+    video.style("opacity", "1");
+    if (hoverStarted) {
+      videoContainer.removeClass("removeEvents");
+      video.showControls();
+    } else {
+      video.play();
+    }
+    button.html("skip>>");
+    button.removeClass("removeEvents");
+  }
+}
+
+function hideVideo() {
+  if(text4Pos<-5 && !hasSkippedVideo) {
+    video.style("opacity", "0");
+    video.pause();
+    button.html("scroll to continue");
+    button.addClass("removeEvents");
+  }
+}
+
+//----------------------------------------------------------------------------------------
+
+function showInstructions() {
+  startButton.style("opacity", "1");
+  startButton.removeClass("removeEvents");
+  startButtonContainer.removeClass("removeEvents");
+  instructions.style("opacity","1");
 }
