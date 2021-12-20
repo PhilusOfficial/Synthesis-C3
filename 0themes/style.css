@@ -90,37 +90,38 @@ a {
 
 #catTitle {
   position: absolute;
-  top: 18vh;
+  top: 22vh;
   margin-top:0;
   color: black;
   font-family: Arial;
-  font-size: 9vw;
-  margin-left: 4vw;
+  font-size: 19vh;
+  margin-left: 7.3vw;
 }
 
 .parent {
   position: absolute;
-  top: 39vh;
+  top: 44vh;
 }
 
 .collapsible {
+  font-weight: 300;
   font-family: input-mono;
-  font-size: 1.2vw;
+  font-size: 2.8vh;
   background-color: #f9f8f7;
   color: black;
   cursor: pointer;
-  padding: 0.7vw;
+  padding: 1vh;
   padding-left: 2vw;
   width: 100vw;
   text-align: left;
   border: none;
   outline: inherit;
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid black;
 }
 
 .pTitle{
   position:absolute;
-  left: 5vw;
+  left: 8vw;
 }
 
 .content {

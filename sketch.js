@@ -330,6 +330,7 @@ function showVideo() {
     video.style("opacity", "1");
     if (hoverStarted) {
       video.showControls();
+      videoContainer.removeClass("removeEvents");
     } else {
       video.play();
     }
