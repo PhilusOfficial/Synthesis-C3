@@ -108,7 +108,7 @@ function calculatePositionsY() {
       let thisPosY = random(25, 35);
       yPos[i] = thisPosY;
     } else {
-      let thisPosY = random(60, 70);
+      let thisPosY = random(58, 63);
       yPos[i] = thisPosY;
     }
   }
