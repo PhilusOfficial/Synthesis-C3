@@ -110,7 +110,7 @@ a {
   padding: 0;
   padding-bottom: 20vh;
   font-family: input-mono;
-  font-size: 2.75vw;
+  font-size: 2.55vw;
   font-weight: 300;
 }
 
@@ -119,8 +119,8 @@ a {
 
 #projectText {
   margin-top: 3vh;
-  margin-left: 5vw;
-  margin-right: 5vw;
+  margin-left: 8vw;
+  margin-right: 8vw;
   line-height: 4vw;
 }
 
@@ -223,14 +223,14 @@ a {
 
 #outputText {
   margin-top: 3vh;
-  margin-left: 5vw;
-  margin-right: 5vw;
+  margin-left: 8vw;
+  margin-right: 8vw;
   line-height: 4vw;
 }
 
 
 h1{
-  font-size:2.75vw;
+  font-size:2.55vw;
   font-weight: normal;
   line-height: 2.8vw
 }
@@ -261,7 +261,7 @@ h1{
 
 
 .researchBox {
-  height: 370vw;
+  height: 350vw;
 }
 
 
@@ -405,45 +405,45 @@ h1{
 
 
 #n{
-  font-size:2.75vw;
+  font-size:2.55vw;
   transition:0.27s;
   opacity: 25%;
 
 
 }
 #u{
-  font-size:2.75vw;
+  font-size:2.55vw;
   transition:0.12s;
   opacity: 35%;
 
 }
 
 #a{
-  font-size:2.75vw;
+  font-size:2.55vw;
   transition:0.27s;
   opacity: 45%;
 
 }
 #n2{
-  font-size:2.75vw;
+  font-size:2.55vw;
   transition:0.27s;
   opacity: 55%;
 
 }
 #c2{
-  font-size:2.75vw;
+  font-size:2.55vw;
   transition:0.27s;
   opacity: 65%;
 
 }
 #e2{
-  font-size:2.75vw;
+  font-size:2.55vw;
   transition:0.27s;
   opacity: 75%;
 
 }
 #s{
-  font-size:2.75vw;
+  font-size:2.55vw;
   transition:0.27s;
   opacity: 85%;
 
@@ -451,7 +451,7 @@ h1{
 
 
 #e{
-  font-size:2.75vw;
+  font-size:2.55vw;
   -webkit-transition: .27s;
   -webkit-moz-transition: .27s;
   -o-transition: .27s;
@@ -462,7 +462,7 @@ h1{
 
 }
 #c{
-  font-size:2.75vw;
+  font-size:2.55vw;
   -webkit-transition: .12s;
   -webkit-moz-transition: .12s;
   -o-transition: .12s;
@@ -474,7 +474,7 @@ h1{
 }
 
 #h{
-  font-size:2.75vw;
+  font-size:2.55vw;
   -webkit-transition: .27s;
   -webkit-moz-transition: .27s;
   -o-transition: .27s;
@@ -485,7 +485,7 @@ h1{
 
 }
 #o{
-  font-size:2.75vw;
+  font-size:2.55vw;
   -webkit-transition: .27s;
   -webkit-moz-transition: .27s;
   -o-transition: .27s;
@@ -565,14 +565,15 @@ h1{
 
 .parent {
   position:relative;
-  width: 100vw;
+  width: 84vw;
   height: 100vw;
-  margin-left:3vw;
+  margin-left:8vw;
+  margin-right: 8vw;
 }
 
 .video1 {
   position: absolute;
-  top: 10vw;
+  top: 12vh;
 }
 
 .video1 video {
@@ -582,10 +583,10 @@ h1{
 
 .p1 {
   position: absolute;
-  top: 7vw;
+  top: 10vh;
   left: 52%;
   width: 40vw;
-  font-size: 2.75vw;
+  font-size: 2.55vw;
 }
 
 .video2 {
@@ -603,7 +604,7 @@ h1{
   top: 47vw;
   left: 52%;
   width: 40vw;
-  font-size: 2.75vw;
+  font-size: 2.55vw;
 }
 
 #protImg {
@@ -629,33 +630,84 @@ h1{
   top: 92vw;
   left: 52%;
   width: 40vw;
-  font-size: 2.75vw;
+  font-size: 2.55vw;
 }
 
 .rect{
-  width: 150vw;
-  height: 0.2vh;
+  width: 84vw;
+  height: 1px;
   top: 8.5vh;
- margin-left:-85vw;
+ margin-left:-52vw;
   background-color: black;
-  margin-top: -3.2vh;
 }
+
+.pspecial1 {
+  position: absolute;
+  top: 10vh;
+  left: 52%;
+  width: 40vw;
+  font-size: 2.55vw;
+}
+
+.videospecial1 {
+  position: absolute;
+  top: 12vh;
+}
+
+.videospecial1 video {
+  position: absolute;
+  width: 40vw;
+}
+
+.pspecial2 {
+  position: absolute;
+  top: 41vw;
+  left: 52%;
+  width: 40vw;
+  font-size: 2.55vw;
+}
+
+.videospecial2 {
+  position: absolute;
+  top: 43vw;
+}
+
+.videospecial2 video {
+  position: absolute;
+  width: 40vw;
+}
+
+.pspecial3 {
+  position: absolute;
+  top: 78vw;
+  left: 52%;
+  width: 40vw;
+  font-size: 2.55vw;
+}
+
+.imag3{
+  width:40vw;
+  position:relative;
+  top: 80vw;
+}
+
 
 
 
 /*---------------------------------------------------- PROTOCOL2*/
 .genitore {
-  margin-top:36vh;
-  margin-left:3vw;
+  margin-top:12vw;
+  margin-left:8vw;
+  margin-right:8vw;;
   position:relative;
-  width: 100vw;
+  width: 84vw;
   height: 100vw;
 }
 .title {
-  font-size: 2vw;
+  font-size: 2vh;
   font-weight: normal;
   position: absolute;
-  top: 5.5vh;
+  top: 2vh;
   left: 52vw;
 
 }
@@ -680,20 +732,15 @@ h1{
 /*---------------------------------------------------- PROTOCOL3*/
 
 .padre{
-  margin-top:54vh;
+  margin-top:16vw;
   position:relative;
-  width: 100vw;
+  width: 84vw;
   height: 100vw;
-  margin-left:3vw;
+  margin-left:8vw;
+  margin-right: 8vw;
 }
 
 .ima3{
-  width:40vw;
-  position:relative;
-  top: 95vw;
-}
-
-.imag3{
   width:40vw;
   position:relative;
   top: 95vw;
@@ -720,11 +767,11 @@ h1{
 }
 
 #self {
-    margin-left:7vw;
+    margin-left:8vw;
     margin-top: 6vh;
     margin-bottom: 0;
-    font-family: neue-haas-unica;
-    font-size: 2.75vw;
+    font-family: input-mono;
+    font-size: 2.55vw;
     font-weight:normal;
 }
 
@@ -732,9 +779,9 @@ h1{
     margin:5vw;
     margin-top: 0vw;
     display: flex;
+    align-items: flex-start;
     justify-content: center;
     flex-wrap: wrap;
-    transform: translateY(-7%);
 }
 .primegif{
     width:100%;
@@ -742,7 +789,7 @@ h1{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-   margin-left:30px;
+   margin-left:3vw;
 }
 
 .secondegif{
@@ -751,23 +798,21 @@ h1{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-
 }
 
 .identity{
-   float:left;
    margin-top:2vh;
    margin-bottom:3vh;
 }
 
 .identity2{
- margin-left:13vw;
+ margin-left:10vw;
  margin-top:2vh;
  margin-bottom: 3vh;
  }
 
  .identity3{
-    margin-left:14.5vw;
+    margin-left:10.5vw;
     margin-top:2vh;
     margin-bottom: 3vh;
     }
