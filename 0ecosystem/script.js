@@ -1,8 +1,7 @@
 
-d3.html('assets/ecosystem.svg').then(function (newDocument) {
+d3.html('assets/mappa.svg').then(function (newDocument) {
 
     const svg = newDocument.querySelector('svg');
-
     // append the svg node to our webpage
     document.querySelector('#network-container').appendChild(svg);
 
@@ -109,12 +108,11 @@ d3.html('assets/ecosystem.svg').then(function (newDocument) {
         applications.style('opacity',1)
         categories.style("opacity", 1)
         numbers.style("opacity",0)
-
         const this_back=d3.select("#background")
         const old_color=this_back.select("rect").attr("fill")
         knowmore.attr("fill", old_color)
-
         const legend_back=d3.selectAll("#bob>circle")
+        console.log(legend_back.attr("fill", "#d8d8d8"))
         const old_legend=legend_back.attr("fill", "#d8d8d8")
         legend.attr("fill", "#d8d8d8")
       });

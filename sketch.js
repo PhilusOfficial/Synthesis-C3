@@ -51,19 +51,19 @@ function setup() {
   text4 = select("#text4");
 
   text1Initial=115;
-  text2Initial=130;
-  text3Initial=150;
-  text4Initial=165;
+  text2Initial=135;
+  text3Initial=155;
+  text4Initial=170;
 
   text1Final=15;
-  text2Final=30;
-  text3Final=50;
-  text4Final=65;
+  text2Final=35;
+  text3Final=55;
+  text4Final=70;
 
   text1Final2=15-100;
-  text2Final2=30-100;
-  text3Final2=50-100;
-  text4Final2=65-100;
+  text2Final2=35-100;
+  text3Final2=55-100;
+  text4Final2=70-100;
 
   text1Pos = text1Initial;
   text2Pos = text2Initial;
@@ -329,7 +329,6 @@ function showVideo() {
   if(text4Pos<-5 && !hasSkippedVideo) {
     video.style("opacity", "1");
     if (hoverStarted) {
-      videoContainer.removeClass("removeEvents");
       video.showControls();
     } else {
       video.play();
