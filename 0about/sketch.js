@@ -122,7 +122,7 @@ function draw() {
   projectFinal = projectInitial-projectHeight*100/windowHeight-15;
   researchFinal = researchInitial-researchHeight*100/windowHeight-15;
   outputFinal = outputInitial-outputHeight*100/windowHeight-15;
-  creditsFinal = creditsInitial-creditsHeight*100/creditsHeight-135;
+  creditsFinal = creditsInitial-creditsHeight*100/creditsHeight-165;
 
   projectBox.style("top", projectPos + "vh");
   researchBox.style("top", researchPos + "vh");
