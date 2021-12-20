@@ -116,6 +116,7 @@ body {
 
 
 .video {
+  display: none;
   transition: .5s;
   opacity: 0;
   padding: 0;
