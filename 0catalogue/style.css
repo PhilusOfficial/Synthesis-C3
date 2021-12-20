@@ -216,7 +216,6 @@ a {
   -webkit-moz-transition: 1s;
   -o-transition: 1s;
   transition: 1s;
-  border: 1px solid black;
 }
 
 .siteName {
@@ -244,7 +243,7 @@ a {
   color: white;
   font-size: 16px;
   border: none;
-  opacity: 0.5;
+  opacity: 0;
   height: 5vh;
 }
 

@@ -602,14 +602,15 @@ function rearrangeSelection() {
       siteKeywords.parent(siteContainer);
       siteKeywords.addClass("siteKeywords");
       let keywordsHeightPx = siteKeywords.style("height");
-      let keywordsHeightVh = keywordsHeightPx.substring(0,keywordsHeightPx.length-2);
 
+      let keywordsHeightVh = int(keywordsHeightPx.substring(0,keywordsHeightPx.length-2))*100/windowHeight+6;
+      print(keywordsHeightVh);
       //------------------------------------------------------------------------------------
 
       let overlayAll = createDiv();
       overlayAll.position(0, 0);
       overlayAll.addClass("dropdown");
-      overlayAll.style("top", currentPosY - keywordsLength / 30 + "vh");
+      overlayAll.style("top", currentPosY - keywordsLength / 40 + "vh");
       overlayAll.style("left", currentPosX + "vh");
 
 
@@ -627,7 +628,7 @@ function rearrangeSelection() {
       if (currentPosY>50) {
         overlayContainer.style("top", "auto");
         overlayContainer.style("bottom", "0");
-        overlayContainer.style("transform", "translateY(" + keywordsHeightVh*100/windowHeight + "vw)");
+        overlayContainer.style("transform", "translateY(" + keywordsHeightVh + "vh)");
 
       }
 
