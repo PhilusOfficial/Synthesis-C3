@@ -8,11 +8,39 @@ a:hover {
 }
 
 .container-fluid{
-    width: 100%;
-    height: 100%;
+  width:80%;
 }
 
-.container {
+#ecosystemIcon {
+  position: absolute;
+  top:0.5vw;
+  width:3vw;
+  left: 95vw;
+  z-index: 4;
+}
+
+#notice {
+  font-family: neue-haas-unica;
+  font-size: 2vh;
+  background-color:#f9f8f7;
+  position:absolute;
+  margin: 0;
+  padding:1vh;
+  padding-left: 1.8vw;
+  border-top: 1px solid black;
+  width: 100%;
+  bottom: 0vh;
+  display: flex;
+  justify-content: flex-start;
+  z-index: 2;
+}
+
+#notice p{
+  padding:0;
+  margin:0;
+}
+
+.containerNav {
   height: 2vw;
   display: block;
   width:100vw;

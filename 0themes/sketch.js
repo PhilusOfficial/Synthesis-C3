@@ -137,7 +137,7 @@ function freedomCreate() {
       keyword.parent(freedomDiv);
       keyword.addClass("word");
 
-      let websites = createDiv(wholeKeyword + "is used by:<br>" + freedomKeywords[i].Websites);
+      let websites = createDiv("Keyword used by:<br>" + freedomKeywords[i].Websites);
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
@@ -154,7 +154,7 @@ function freedomCreate() {
       counter.addClass("word");
     }
 
-    let websites2 = createDiv(wholeKeyword + " " + "is used by:<br>" + freedomKeywords[i].Websites);
+    let websites2 = createDiv("Keyword used by:<br>" + freedomKeywords[i].Websites);
     websites2.parent(counter);
     websites2.addClass("dropdown");
   }
@@ -176,7 +176,7 @@ function decentralizedCreate() {
       keyword.parent(decentralizedDiv);
       keyword.addClass("word");
 
-      let websites = createDiv("is used by:<br>" + decentralizedKeywords[i].Websites);
+      let websites = createDiv("Keyword used by:<br>" + decentralizedKeywords[i].Websites);
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
@@ -193,7 +193,7 @@ function decentralizedCreate() {
       counter.addClass("word");
     }
 
-    let websites = createDiv("is used by:<br>" + decentralizedKeywords[i].Websites);
+    let websites = createDiv("Keyword used by:<br>" + decentralizedKeywords[i].Websites);
     websites.parent(counter);
     websites.addClass("dropdown");
   }
@@ -214,7 +214,7 @@ function rightCreate() {
       keyword.parent(rightDiv);
       keyword.addClass("word");
 
-      let websites = createDiv("is used by:<br>" + rightKeywords[i].Websites);
+      let websites = createDiv("Keyword used by:<br>" + rightKeywords[i].Websites);
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
@@ -231,7 +231,7 @@ function rightCreate() {
       counter.addClass("word");
     }
 
-    let websites = createDiv("is used by:<br>" + rightKeywords[i].Websites);
+    let websites = createDiv("Keyword used by:<br>" + rightKeywords[i].Websites);
     websites.parent(counter);
     websites.addClass("dropdown");
   }
@@ -252,7 +252,7 @@ function safeCreate() {
       keyword.parent(safeDiv);
       keyword.addClass("word");
 
-      let websites = createDiv("is used by:<br>" + safeKeywords[i].Websites);
+      let websites = createDiv("Keyword used by:<br>" + safeKeywords[i].Websites);
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
@@ -269,7 +269,7 @@ function safeCreate() {
       counter.addClass("word");
     }
 
-    let websites = createDiv("is used by:<br>" + safeKeywords[i].Websites);
+    let websites = createDiv("Keyword used by:<br>" + safeKeywords[i].Websites);
     websites.parent(counter);
     websites.addClass("dropdown");
   }
@@ -290,7 +290,7 @@ function dataCreate() {
       keyword.parent(dataDiv);
       keyword.addClass("word");
 
-      let websites = createDiv("is used by:<br>" + dataKeywords[i].Websites);
+      let websites = createDiv("Keyword used by:<br>" + dataKeywords[i].Websites);
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
@@ -307,7 +307,7 @@ function dataCreate() {
       counter.addClass("word");
     }
 
-    let websites = createDiv("is used by:<br>" + dataKeywords[i].Websites);
+    let websites = createDiv("Keyword used by:<br>" + dataKeywords[i].Websites);
     websites.parent(counter);
     websites.addClass("dropdown");
   }
@@ -328,7 +328,7 @@ function alternativeCreate() {
       keyword.parent(alternativeDiv);
       keyword.addClass("word");
 
-      let websites = createDiv("is used by:<br>" + alternativeKeywords[i].Websites);
+      let websites = createDiv("Keyword used by:<br>" + alternativeKeywords[i].Websites);
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
@@ -345,7 +345,7 @@ function alternativeCreate() {
       counter.addClass("word");
     }
 
-    let websites = createDiv("is used by:<br>" + alternativeKeywords[i].Websites);
+    let websites = createDiv("Keyword used by:<br>" + alternativeKeywords[i].Websites);
     websites.parent(counter);
     websites.addClass("dropdown");
   }
@@ -366,7 +366,7 @@ function openCreate() {
       keyword.parent(openDiv);
       keyword.addClass("word");
 
-      let websites = createDiv("is used by:<br>" + openKeywords[i].Websites);
+      let websites = createDiv("Keyword used by:<br>" + openKeywords[i].Websites);
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
@@ -383,7 +383,7 @@ function openCreate() {
       counter.addClass("word");
     }
 
-    let websites = createDiv("is used by:<br>" + openKeywords[i].Websites);
+    let websites = createDiv("Keyword used by:<br>" + openKeywords[i].Websites);
     websites.parent(counter);
     websites.addClass("dropdown");
   }
@@ -404,7 +404,7 @@ function advertisementCreate() {
       keyword.parent(advertisementDiv);
       keyword.addClass("word");
 
-      let websites = createDiv("is used by:<br>" + advertisementKeywords[i].Websites);
+      let websites = createDiv("Keyword used by:<br>" + advertisementKeywords[i].Websites);
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
@@ -421,7 +421,7 @@ function advertisementCreate() {
       counter.addClass("word");
     }
 
-    let websites = createDiv("is used by:<br>" + advertisementKeywords[i].Websites);
+    let websites = createDiv("Keyword used by:<br>" + advertisementKeywords[i].Websites);
     websites.parent(counter);
     websites.addClass("dropdown");
   }
@@ -442,7 +442,7 @@ function realCreate() {
       keyword.parent(realDiv);
       keyword.addClass("word");
 
-      let websites = createDiv("is used by:<br>" + realKeywords[i].Websites);
+      let websites = createDiv("Keyword used by:<br>" + realKeywords[i].Websites);
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
@@ -459,7 +459,7 @@ function realCreate() {
       counter.addClass("word");
     }
 
-    let websites = createDiv("is used by:<br>" + realKeywords[i].Websites);
+    let websites = createDiv("Keyword used by:<br>" + realKeywords[i].Websites);
     websites.parent(counter);
     websites.addClass("dropdown");
   }
@@ -480,7 +480,7 @@ function freeCreate() {
       keyword.parent(freeDiv);
       keyword.addClass("word");
 
-      let websites = createDiv("is used by:<br>" + freeKeywords[i].Websites);
+      let websites = createDiv("Keyword used by:<br>" + freeKeywords[i].Websites);
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
@@ -497,7 +497,7 @@ function freeCreate() {
       counter.addClass("word");
     }
 
-    let websites = createDiv("is used by:<br>" + freeKeywords[i].Websites);
+    let websites = createDiv("Keyword used by:<br>" + freeKeywords[i].Websites);
     websites.parent(counter);
     websites.addClass("dropdown");
   }

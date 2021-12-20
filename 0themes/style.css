@@ -18,6 +18,14 @@ body {
   font-size: 1.2vw;
 }
 
+#themesIcon {
+  position: absolute;
+  top:0.5vw;
+  width:3vw;
+  left: 95vw;
+  z-index: 4;
+}
+
 #restart {
   left:2vw;
   position: absolute;
@@ -80,7 +88,7 @@ a {
 
 #catTitle {
   position: absolute;
-  top: 20vh;
+  top: 18vh;
   margin-top:0;
   color: black;
   font-family: Arial;
@@ -110,7 +118,7 @@ a {
 
 .pTitle{
   position:absolute;
-  left: 9vw;
+  left: 5vw;
 }
 
 .content {
@@ -118,7 +126,9 @@ a {
   overflow: hidden;
   transition: max-height 0.5s ease-out;
 }
-
+#freedomCollapsible {
+  border-top: 1px solid black;
+}
 .collapsible:hover #freedomTitle {background-color: #6eb1f4}
 .collapsible:hover #decentralizedTitle {background-color: #d85652}
 .collapsible:hover #rightTitle {background-color: #bcdcf7}
@@ -147,7 +157,8 @@ a {
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
-  border: 2px solid black;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
 }
 
 .word {
