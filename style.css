@@ -81,28 +81,6 @@ body {
   padding: 0;
 }
 
-#intro {
-  pointer-events: none;
-  position: absolute;
-  width: 100vw;
-  height: 95vh;
-  top: 0;
-  display: flex;
-  overflow: none;
-  justify-content: center;
-  flex-direction: column;
-  align-content: center;
-}
-
-.startText {
-  position:absolute;
-  transition: 0s;
-  font-size: 2.1vw;
-  margin: 3vh 12vw;
-  transition-timing-function: linear;
-  top:100vh;
-}
-
 .mediaContainer {
   position: absolute;
   display: flex;
@@ -117,17 +95,15 @@ body {
 
 .video {
   transition: .5s;
+  transform:translateY(50vh);
   opacity: 0;
   padding: 0;
-  width: 70vw;
+  height: 80vh;
 }
 
-#instructions {
-  transition: .5s;
-  opacity: 0;
-  pointer-events: none;
-  padding-bottom: 10vh;
-  width: 70vw;
+.videoAppear {
+  transform:translateY(0vh);
+  opacity: 1;
 }
 
 a {
@@ -135,26 +111,15 @@ a {
   text-decoration: none;
 }
 
-.buttonContainer {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  padding: 0;
-}
-
 #enter {
   font-family: input-mono;
-  top: 85vh;
+  top: 91vh;
   position: absolute;
-  padding: 1vw 1.5vw;
+  padding: 1.2vh 1.7vh;
   font-weight: 300;
   font-style: normal;
-  font-size: 1.7vw;
-  border-radius: 3vw;
+  font-size: 2.5vh;
+  border-radius: 999vh;
   background-color: white;
   border: 0.1vw solid black;
   outline: none;

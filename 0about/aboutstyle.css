@@ -682,6 +682,11 @@ h1{
   width: 40vw;
 }
 
+.videospecial2 video {
+  position: absolute;
+  width: 40vw;
+}
+
 .pspecial3 {
   position: absolute;
   top: 78vw;

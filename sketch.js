@@ -9,15 +9,12 @@ let finalTitle;
 let finalTitleContainer;
 let finalTitleQuote;
 
-let instructions;
 let itsTime = false;
 let index = 0;
 let button;
 let scrollAvailable = false;
 let hasSkippedGame = false;
-let hasSkippedVideo = false;
 let wordsAppeared = false;
-let scrollPoint = 0;
 let video;
 let videoContainer;
 let loadedVideo = false;
@@ -25,12 +22,6 @@ let deletedN=0;
 let titleDisappeared = false;
 let hoverStarted = false;
 let startButton;
-let startButtonContainer;
-
-let text1, text2, text3, text4;
-let text1Pos, text2Pos, text3Pos, text4Pos;
-let text1Initial, text2Initial, text3Initial, text4Initial;
-let text1Final, text2Final, text3Final, text4Final;
 
 let speed = 5;
 
@@ -45,35 +36,8 @@ function setup() {
   finalTitle = select(".finalTitle");
   finalTitleQuote = select(".finalTitleQuote");
 
-  text1 = select("#text1");
-  text2 = select("#text2");
-  text3 = select("#text3");
-  text4 = select("#text4");
-
-  text1Initial=115;
-  text2Initial=135;
-  text3Initial=155;
-  text4Initial=170;
-
-  text1Final=15;
-  text2Final=35;
-  text3Final=55;
-  text4Final=70;
-
-  text1Final2=15-100;
-  text2Final2=35-100;
-  text3Final2=55-100;
-  text4Final2=70-100;
-
-  text1Pos = text1Initial;
-  text2Pos = text2Initial;
-  text3Pos = text3Initial;
-  text4Pos = text4Initial;
-
   video=select(".video");
-  video.onended(startFunction);
   videoContainer = select("#videoContainer");
-  instructions = select("#instructions");
 
   var rColor = random(colors);
   button = select("#scrolldown");
@@ -81,7 +45,6 @@ function setup() {
   button.style("background-color", "#" + rColor);
 
   startButton = select("#enter");
-  startButtonContainer = select(".buttonContainer");
 
   paroleDiv = select("#keywordsContainer");
   paroleDiv.style("background-color", "#" + rColor);
@@ -112,29 +75,7 @@ function draw() {
     index++;
   }
 
-  text1.style("top", text1Pos + "vh");
-  text2.style("top", text2Pos + "vh");
-  text3.style("top", text3Pos + "vh");
-  text4.style("top", text4Pos + "vh");
-
-  //checkBoundaries();
 }
-
-function checkBoundaries() {
-  if (text1Pos < text1Final || text1Pos > text1Initial) {
-    text1Pos = text1Final;
-  }
-  if (text2Pos < text2Final || text2Pos > text2Initial) {
-    text2Pos = text2Final;
-  }
-  if (text3Pos < text3Final || text3Pos > text3Initial) {
-    text3Pos = text3Final;
-  }
-  if (text4Pos < text4Final || text4Pos > text4Initial) {
-    text4Pos = text4Final;
-  }
-}
-
 //----------------------------------------------------------------------------------------------
 function deleteWord() {
   this.style("opacity", "0");
@@ -146,14 +87,6 @@ function deleteWord() {
 }
 
 function startFunction() {
-  if (!hasSkippedVideo && hasSkippedGame) {
-    video.style("opacity", "0");
-    setTimeout(function() {video.remove();}, 500);
-    button.addClass("removeEvents");
-    button.html("");
-    showInstructions();
-    hasSkippedVideo=true;
-  }
 
   if (!hasSkippedGame) {
     button.addClass("removeEvents");
@@ -192,168 +125,35 @@ function mouseWheel() {
       finalTitleContainer.style("opacity", 0);
       titleDisappeared = true;
     }
-    text1Up();
-    text2Up();
-    text3Up();
-    text4Up();
-    textsUp();
     showVideo();
   }
-
-  if (scrollAvailable && event.deltaY < 0) {
-    scrollPoint--;
-    if(!titleDisappeared) {
-      finalTitleContainer.style("opacity", 0);
-      titleDisappeared = true;
-    }
-    text1Down();
-    text2Down();
-    text3Down();
-    text4Down();
-    textsDown();
-    hideVideo();
-  }
-}
-
-function text1Up() {
-  if (text1Pos >= text1Final && text1Pos <= text1Initial) {
-    if (text1Pos - speed < text1Final) {
-      text1Pos = text1Final;
-    } else {
-      text1Pos -= speed;
-      setTimeout(function() {finalTitleContainer.style("opacity", 0);}, 200);
-    }
-  }
-}
-
-function text1Down() {
-  if (text1Pos >= text1Final && text1Pos <= text1Initial && text2Pos == text2Initial) {
-    if (text1Pos + speed > text1Initial) {
-      text1Pos = text1Initial;
-      finalTitleContainer.style("opacity", 1);
-    } else {
-      text1Pos += speed;
-    }
-  }
-}
-
-//-------------------------------------------------------------------------------titolo + scroll
-
-function text2Up() {
-  if (text2Pos >= text2Final && text2Pos <= text2Initial && text1Pos == text1Final) {
-    if (text2Pos - speed < text2Final) {
-      text2Pos = text2Final;
-    } else {
-      text2Pos -= speed;
-    }
-  }
-}
-
-function text2Down() {
-  if (text2Pos >= text2Final && text2Pos <= text2Initial && text3Pos == text3Initial) {
-    if (text2Pos + speed > text2Initial) {
-      text2Pos = text2Initial;
-    } else {
-      text2Pos += speed;
-    }
-  }
-}
-
-//-------------------------------------------------------------------------------titolo + scroll
-
-function text3Up() {
-  if (text3Pos >= text3Final && text3Pos <= text3Initial && text2Pos == text2Final) {
-    if (text3Pos - speed < text3Final) {
-      text3Pos = text3Final;
-    } else {
-      text3Pos -= speed;
-    }
-  }
-}
-
-function text3Down() {
-  if (text3Pos >= text3Final && text3Pos <= text3Initial && text4Pos == text4Initial) {
-    if (text3Pos + speed > text3Initial) {
-      text3Pos = text3Initial;
-    } else {
-      text3Pos += speed;
-    }
-  }
-}
-
-//-------------------------------------------------------------------------------titolo + scroll
-
-function text4Up() {
-  if (text4Pos >= text4Final && text4Pos <= text4Initial && text3Pos == text3Final) {
-    if (text4Pos - speed < text4Final) {
-      text4Pos = text4Final;
-    } else {
-      text4Pos -= speed;
-    }
-  }
-}
-
-function text4Down() {
-  if (text4Pos >= text4Final && text4Pos <= text4Initial) {
-    if (text4Pos + speed > text4Initial) {
-      text4Pos = text4Initial;
-    } else {
-      text4Pos += speed;
-    }
-  }
-}
-
-//--------------------------------------------------------------------------------------------
-
-function textsUp() {
-  if (text4Pos <= text4Final) {
-      text1Pos -= speed;
-      text2Pos -= speed;
-      text3Pos -= speed;
-      text4Pos -= speed;
-    }
-}
-
-function textsDown() {
-  if (text4Pos <= text4Final && !hasSkippedVideo) {
-      text1Pos += speed;
-      text2Pos += speed;
-      text3Pos += speed;
-      text4Pos += speed;
-    }
 }
 
 //----------------------------------------------------------------------------------------
 
 function showVideo() {
-  if(text4Pos<-5 && !hasSkippedVideo) {
-    video.style("opacity", "1");
+  if(!loadedVideo) {
+    video.addClass("videoAppear");
     if (hoverStarted) {
 
       video.showControls();
       videoContainer.removeClass("removeEvents");
     } else {
       video.play();
+      video.showControls();
+      videoContainer.removeClass("removeEvents");
     }
     button.html("skip>>");
     button.removeClass("removeEvents");
+    button.mousePressed(showWebsite);
+    video.onended(showWebsite);
   }
 }
 
-function hideVideo() {
-  if(text4Pos<-5 && !hasSkippedVideo) {
-    video.style("opacity", "0");
-    video.pause();
-    button.html("scroll to continue");
-    button.addClass("removeEvents");
-  }
-}
-
-//----------------------------------------------------------------------------------------
-
-function showInstructions() {
+function showWebsite() {
+  video.time(44);
+  button.html("");
+  button.addClass("removeEvents");
   startButton.style("opacity", "1");
   startButton.removeClass("removeEvents");
-  startButtonContainer.removeClass("removeEvents");
-  instructions.style("opacity","1");
 }
