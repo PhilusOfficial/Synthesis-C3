@@ -68,7 +68,7 @@ function preload() {
     infoBox.addClass("closedInfo");
     infoContainer.addClass("removeElements");
   }
-  
+
   allWebsites = loadJSON("websites.json");
   for (let i=0; i<3; i++) {
     favicons[i]= loadImage("favicons/favicon"+i+".ico");
@@ -84,7 +84,8 @@ function setup() {
   calculatePositionsY();
   rearrangeSelection();
 
-
+  infoBox.style("transition",".5s");
+  infoContainer.style("transition",".5s");
 
   freedomBox = select('#freedom');
   rightBox = select('#right');

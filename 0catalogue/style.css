@@ -15,9 +15,9 @@ html::-webkit-scrollbar {
 
 #infoIcon {
   position: fixed;
-  top:1vw;
-  width:2vw;
-  left: 97vw;
+  top:1.2vw;
+  width:1.7vw;
+  left: 97.1vw;
   z-index: 4;
 }
 
@@ -32,7 +32,6 @@ html::-webkit-scrollbar {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: 0.5s;
 }
 
 #infoBox {
@@ -46,7 +45,6 @@ html::-webkit-scrollbar {
   width: 20vw;
   z-index: 3;
   opacity: 1;
-  transition: .5s;
 }
 
 #infoBox p {
@@ -187,7 +185,7 @@ a {
 }
 
 #decentralized:hover {
-  background-color: #d85652;
+  background-color: #d66b6b;
 }
 
 #safe:hover {
@@ -215,7 +213,7 @@ a {
 }
 
 #free:hover {
-  background-color: #647eff;
+  background-color: #6989ff;
 }
 
 #uncategorized:hover {
@@ -231,7 +229,7 @@ a {
 }
 
 .decentralized {
-  background-color: #d85652;
+  background-color: #d66b6b;
 }
 
 .safe {
@@ -259,7 +257,7 @@ a {
 }
 
 .free {
-  background-color: #647eff;
+  background-color: #6989ff;
 }
 
 .uncategorized {
