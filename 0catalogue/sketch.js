@@ -48,6 +48,13 @@ let realBox;
 let freeBox;
 let uncategorizedBox;
 
+let infoIcon;
+let infoContainer;
+let infoBox;
+let infoButton;
+
+let firstPageLoad;
+
 let favicons = [];
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 function preload() {
@@ -65,6 +72,23 @@ function setup() {
   calculatePositionsX();
   calculatePositionsY();
   rearrangeSelection();
+
+  infoIcon = select("#infoIcon")
+  infoContainer = select("#infoContainer");
+  infoBox = select("#infoBox");
+  infoButton = select("#infoButton");
+
+  infoIcon.mousePressed(enlargeInfo);
+  infoButton.mousePressed(reduceInfo);
+
+  if (getItem("firstPageLoad")===null) {
+    storeItem("firstPageLoad", false);
+  }
+
+  if (getItem("firstPageLoad")==false) {
+    infoBox.addClass("closedInfo");
+    infoContainer.addClass("removeElements");
+  }
 
   freedomBox = select('#freedom');
   rightBox = select('#right');
@@ -94,6 +118,16 @@ function setup() {
 function draw() {}
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+function reduceInfo() {
+  infoBox.addClass("closedInfo");
+  infoContainer.addClass("removeElements");
+}
+
+function enlargeInfo() {
+  infoBox.removeClass("closedInfo");
+  infoContainer.removeClass("removeElements");
+}
 
 function calculatePositionsX() {
   for (let i = 0; i < 87; i++) {
@@ -604,7 +638,6 @@ function rearrangeSelection() {
       let keywordsHeightPx = siteKeywords.style("height");
 
       let keywordsHeightVh = int(keywordsHeightPx.substring(0,keywordsHeightPx.length-2))*100/windowHeight+6;
-      print(keywordsHeightVh);
       //------------------------------------------------------------------------------------
 
       let overlayAll = createDiv();
