@@ -53,11 +53,22 @@ let infoContainer;
 let infoBox;
 let infoButton;
 
-let firstPageLoad;
-
 let favicons = [];
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 function preload() {
+  infoIcon = select("#infoIcon")
+  infoContainer = select("#infoContainer");
+  infoBox = select("#infoBox");
+  infoButton = select("#infoButton");
+
+  infoIcon.mousePressed(enlargeInfo);
+  infoButton.mousePressed(reduceInfo);
+
+  if (getItem("firstPageLoad")==false) {
+    infoBox.addClass("closedInfo");
+    infoContainer.addClass("removeElements");
+  }
+  
   allWebsites = loadJSON("websites.json");
   for (let i=0; i<3; i++) {
     favicons[i]= loadImage("favicons/favicon"+i+".ico");
@@ -73,22 +84,7 @@ function setup() {
   calculatePositionsY();
   rearrangeSelection();
 
-  infoIcon = select("#infoIcon")
-  infoContainer = select("#infoContainer");
-  infoBox = select("#infoBox");
-  infoButton = select("#infoButton");
 
-  infoIcon.mousePressed(enlargeInfo);
-  infoButton.mousePressed(reduceInfo);
-
-  if (getItem("firstPageLoad")===null) {
-    storeItem("firstPageLoad", false);
-  }
-
-  if (getItem("firstPageLoad")==false) {
-    infoBox.addClass("closedInfo");
-    infoContainer.addClass("removeElements");
-  }
 
   freedomBox = select('#freedom');
   rightBox = select('#right');
@@ -122,6 +118,9 @@ function draw() {}
 function reduceInfo() {
   infoBox.addClass("closedInfo");
   infoContainer.addClass("removeElements");
+  if (getItem("firstPageLoad")===null) {
+    storeItem("firstPageLoad", false);
+  }
 }
 
 function enlargeInfo() {
