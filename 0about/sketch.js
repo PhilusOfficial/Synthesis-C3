@@ -25,6 +25,8 @@ let mainstreamPopup;
 let comments;
 let commentsPopup;
 
+let scrollUp;
+let backUp = false;
 let navbar;
 
 let speed = 5;
@@ -44,6 +46,16 @@ function preload() {
 function setup() {
   noCanvas();
 
+  scrollUp = select("#scrollUp");
+  scrollUp.mousePressed(function() {
+    backUp = true;
+    // projectPos = projectInitial;
+    // researchPos = researchInitial;
+    // outputPos = outputInitial;
+    // creditsPos = creditsInitial;
+    scrollUp.style("opacity", "0");
+    scrollUp.style("pointerEvents", "none");
+  });
   navbar = select(".container");
 
   projectPos = projectInitial;
@@ -111,25 +123,58 @@ function draw() {
 
 
   var projectHeightPx = projectBox.style("height");
-  var projectHeight = projectHeightPx.substring(0,projectHeightPx.length-2);
+  var projectHeight = projectHeightPx.substring(0, projectHeightPx.length - 2);
   var researchHeightPx = researchBox.style("height");
-  var researchHeight = researchHeightPx.substring(0,researchHeightPx.length-2);
+  var researchHeight = researchHeightPx.substring(0, researchHeightPx.length - 2);
   var outputHeightPx = outputBox.style("height");
-  var outputHeight = outputHeightPx.substring(0,outputHeightPx.length-2);
+  var outputHeight = outputHeightPx.substring(0, outputHeightPx.length - 2);
   var creditsHeightPx = creditsBox.style("height");
-  var creditsHeight = creditsHeightPx.substring(0,creditsHeightPx.length-2);
+  var creditsHeight = creditsHeightPx.substring(0, creditsHeightPx.length - 2);
 
-  projectFinal = projectInitial-projectHeight*100/windowHeight-15;
-  researchFinal = researchInitial-researchHeight*100/windowHeight-15;
-  outputFinal = outputInitial-outputHeight*100/windowHeight-15;
-  creditsFinal = creditsInitial-creditsHeight*100/creditsHeight-165;
+  projectFinal = projectInitial - projectHeight * 100 / windowHeight - 15;
+  researchFinal = researchInitial - researchHeight * 100 / windowHeight - 15;
+  outputFinal = outputInitial - outputHeight * 100 / windowHeight - 15;
+  creditsFinal = creditsInitial - creditsHeight * 100 / creditsHeight - 165;
 
   projectBox.style("top", projectPos + "vh");
   researchBox.style("top", researchPos + "vh");
   outputBox.style("top", outputPos + "vh");
   creditsBox.style("top", creditsPos + "vh");
-  navbar.style("top", -projectInitial+projectPos+"vh")
+  navbar.style("top", -projectInitial + projectPos + "vh")
 
+  if (backUp) {
+    if (projectPos >= projectFinal && projectPos <= projectInitial && researchPos == researchInitial) {
+      if (projectPos + speed*5 > projectInitial) {
+        projectPos = projectInitial;
+        backUp = false;
+      } else {
+        projectPos += speed*5;
+      }
+    }
+
+    if (researchPos >= researchFinal && researchPos <= researchInitial && outputPos == outputInitial) {
+      if (researchPos + speed*5 > researchInitial) {
+        researchPos = researchInitial;
+      } else {
+        researchPos += speed*5;
+      }
+    }
+
+    if (outputPos >= outputFinal && outputPos <= outputInitial && creditsPos == creditsInitial) {
+      if (outputPos + speed*5 > outputInitial) {
+        outputPos = outputInitial;
+      } else {
+        outputPos += speed*5;
+      }
+    }
+    if (creditsPos >= creditsFinal && creditsPos <= creditsInitial) {
+      if (creditsPos + speed*5 > creditsInitial) {
+        creditsPos = creditsInitial;
+      } else {
+        creditsPos += speed*5;
+      }
+    }
+  }
   checkBoundaries();
 }
 //--------------------------------------------------------------------------comandi per tutti gli scroll
@@ -140,7 +185,7 @@ function mouseWheel() {
     outputUp();
     creditsUp();
 
-    if(outputPos<outputInitial) {
+    if (outputPos < outputInitial) {
       let typeAnimation = select("#typeAnimation");
       typeAnimation.addClass("type");
 
@@ -178,6 +223,8 @@ function projectUp() {
     if (projectPos - speed < projectFinal) {
       projectPos = projectFinal;
     } else {
+      scrollUp.style("opacity", "1");
+      scrollUp.style("pointerEvents", "all");
       projectPos -= speed;
     }
   }
@@ -187,6 +234,8 @@ function projectDown() {
   if (projectPos >= projectFinal && projectPos <= projectInitial && researchPos == researchInitial) {
     if (projectPos + speed > projectInitial) {
       projectPos = projectInitial;
+      scrollUp.style("opacity", "0");
+      scrollUp.style("pointerEvents", "none");
     } else {
       projectPos += speed;
     }

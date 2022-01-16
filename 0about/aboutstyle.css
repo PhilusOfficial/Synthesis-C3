@@ -76,13 +76,29 @@ a {
   width: 100%;
 }
 
+#scrollUp {
+  z-index:3;
+  width: 5vw;
+  text-align: center;
+  transform: rotate();
+  font-family: neue-haas-unica;
+  font-weight: normal;
+  font-size: 9vw;
+  right: 2vw;
+  bottom: 2vw;
+  position: fixed;
+  cursor: pointer;
+  transition: .5s;
+  opacity:0;
+}
 /* --------------------------------------------------------------------------------------------------------- */
 .titleBig {
   position: absolute;
   top: 0;
   margin-top: 0;
   color: black;
-  font-family: Arial;
+  font-family: neue-haas-unica;
+  font-weight: normal;
   font-size: 9vw;
   margin-left: 7.3vw;
   transform: translateY(-105%);
