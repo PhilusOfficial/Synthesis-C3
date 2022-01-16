@@ -49,6 +49,8 @@ let freeDiv;
 let freeTitle;
 let freeCollapsible;
 
+let underlinable = false;
+
 function preload() {
   freedomKeywords = loadJSON("freedom.json");
   decentralizedKeywords = loadJSON("decentralized.json");
@@ -132,33 +134,55 @@ function freedomCreate() {
     let splitKeyword = split(wholeKeyword, " ");
     let keyword;
     let counter;
-    for (let j = 0; j < splitKeyword.length - 1; j++) {
+    let thisKeywords = [];
+    for (let j = 0; j < splitKeyword.length; j++) {
       keyword = createDiv(splitKeyword[j]);
       keyword.parent(freedomDiv);
       keyword.addClass("word");
+      keyword.addClass(freedomKeywords[i].Keyword);
+      thisKeywords.push(keyword);
+      keyword.mouseOver(freedomUnderline);
+      keyword.mouseOut(unUnderline);
 
       let websites = createDiv("Keyword used by:<br>" + freedomKeywords[i].Websites);
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
 
+    function freedomUnderline() {
+      for (k=0; k<thisKeywords.length; k++) {
+        thisKeywords[k].style("border-bottom","0.2vw solid black");
+      }
+      }
+
+      function unUnderline() {
+        for (k=0; k<thisKeywords.length; k++) {
+          thisKeywords[k].style("border","none");
+        }
+        }
+
+      print(thisKeywords)
 
 
-    if (i < 35) {
-      counter = createDiv(splitKeyword[splitKeyword.length - 1] + " x" + freedomKeywords[i].Number + ",");
-      counter.parent(freedomDiv);
-      counter.addClass("word");
-    } else {
-      counter = createDiv(splitKeyword[splitKeyword.length - 1] + " x" + freedomKeywords[i].Number);
-      counter.parent(freedomDiv);
-      counter.addClass("word");
-    }
+    //
+    // if (i < 35) {
+    //   counter = createDiv(splitKeyword[splitKeyword.length - 1] + ",");
+    //   counter.parent(freedomDiv);
+    //   counter.addClass("word");
+    //
+    // } else {
+    //   counter = createDiv(splitKeyword[splitKeyword.length - 1]);
+    //   counter.parent(freedomDiv);
+    //   counter.addClass("word");
+    // }
 
     let websites2 = createDiv("Keyword used by:<br>" + freedomKeywords[i].Websites);
     websites2.parent(counter);
     websites2.addClass("dropdown");
   }
 }
+
+
 
 function toggleFreedom() {
   freedomTitle.toggleClass("freedomColor");
