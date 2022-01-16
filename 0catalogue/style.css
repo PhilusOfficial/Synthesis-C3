@@ -36,20 +36,20 @@ html::-webkit-scrollbar {
 
 #infoBox {
   font-family: input-mono;
-  font-size: 3vh;
+  font-size: 2.2vh;
   background-color: white;
   position:fixed;
   text-align: center;
-  padding:0vh 4vh;
+  padding: 3vh 3vh;
   border: 1px solid black;
-  width: 20vw;
+  width: 55vh;
   z-index: 3;
   opacity: 1;
 }
 
 #infoBox p {
   text-align: left;
-  margin: 3vh 0vh 1.5vh 0vh;
+  margin: 0vh 0vh 2vh 0vh;
 }
 
 .closedInfo {
@@ -58,11 +58,12 @@ html::-webkit-scrollbar {
 
 #infoButton {
   font-family: input-mono;
-  font-size: 2vh;
-  margin: 1vh 0vh 2.5vh 0vh;
-  padding: 1vh;
+  font-size: 2.2vh;
+  font-weight: 300;
+  margin: 0vh 0vh 0vh 0vh;
+  padding: 0.6vh 1.2vh;
   background-color: white;
-  border-radius: 0;
+  border-radius: 999px;
   border: 1px solid black;
   cursor: pointer;
 }
@@ -90,17 +91,18 @@ html::-webkit-scrollbar {
 }
 
 #restart {
-  left:2vw;
+  left:1.5vw;
   position: absolute;
-  height: 3.7vh;
-  width: 4.5vw;
+  padding: 0.6vh 1.2vh;
   font-weight: 300;
   font-style: normal;
+  font-family: input-mono;
   font-size: 1vw;
   border-radius: 3vw;
   background-color: white;
   border: 0.1vw solid black;
   outline: none;
+  cursor:pointer;
 }
 
 #restart:hover {
