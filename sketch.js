@@ -161,7 +161,7 @@ function showVideo() {
 }
 
 function showWebsite() {
-  video.time(44);
+  video.time(64);
   button.html("");
   button.addClass("removeEvents");
   startButton.style("opacity", "1");
