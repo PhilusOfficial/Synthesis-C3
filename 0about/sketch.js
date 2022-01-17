@@ -34,6 +34,8 @@ let fontsize;
 let vw;
 let vh;
 
+let colors = ["6eb1f4", "d66b6b", "bcdcf7", "ffc5e5", "e8b6ff", "c3e264", "a698f4", "18ad71", "7fe2a9", "6989ff"];
+
 function preload() {
   vw = windowWidth / 100;
   vh = windowHeight / 100;
@@ -45,7 +47,9 @@ function preload() {
 
 function setup() {
   noCanvas();
-
+  howText = select("#how");
+  howText.mouseOver(changeHowColor);
+  howText.mouseOut(changeHowColor);
   scrollUp = select("#scrollUp");
   scrollUp.mousePressed(function() {
     backUp = true;
@@ -84,6 +88,9 @@ function setup() {
   comments.mouseOut(hideComments);
 }
 
+function changeHowColor() {
+  howText.style("color","#"+random(colors))
+}
 //------------------------------------------------------------------------------------------------
 
 function showAlternative() {

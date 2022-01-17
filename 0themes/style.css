@@ -143,17 +143,17 @@ a {
 /* ------------------------------------------------------------------------------------------ */
 #catTitle {
   position: absolute;
-  top: 15vh;
+  top: 17vh;
   margin-top: 0;
   color: black;
   font-family: neue-haas-unica;
-  font-size: 19vh;
+  font-size: 15vh;
   margin-left: 7.3vw;
 }
 
 #titleDescription {
   position: absolute;
-  top: 39vh;
+  top: 39.5vh;
   margin-top: 0;
   color: black;
   font-weight: 300;
@@ -330,7 +330,7 @@ a {
   margin-top: 2vh;
   margin-bottom: 5vh;
   font-size: 16vh;
-  line-height: 12vh;
+  line-height: 15vh;
   font-family: "Neue-Haas-Unica";
   color: black;
 }
@@ -382,7 +382,7 @@ a {
 }
 
 #dece {
-  background-color: #d85652;
+  background-color: #d66b6b;
 }
 
 /*---------------------------------------------------BEING MONITORED*/
@@ -494,5 +494,5 @@ a {
 }
 
 #pay {
-  background-color: #647eff;
+  background-color: #6989ff;
 }

@@ -99,9 +99,17 @@ a {
   color: black;
   font-family: neue-haas-unica;
   font-weight: normal;
-  font-size: 9vw;
+  font-size: 15vh;
+  line-height: 8vh;
   margin-left: 7.3vw;
-  transform: translateY(-105%);
+  transform: translateY(-20vh);
+}
+
+#scrollNotice {
+  font-family: input-mono;
+  font-weight: normal;
+  font-size: 2.8vh;
+  margin-left: 0.7vw;
 }
 
 .sectionName {
