@@ -49,9 +49,23 @@ let freeDiv;
 let freeTitle;
 let freeCollapsible;
 
-let underlinable = false;
+let infoIcon = [];
+let infoContainer;
+let infoBox;
+let infoButton;
 
 function preload() {
+  infoIcon = selectAll(".infoIcon")
+  infoContainer = select("#infoContainer");
+  infoBox = select("#infoBox");
+  infoButton = select("#infoButton");
+  infoBox.addClass("closedInfo");
+  infoContainer.addClass("removeElements");
+  for (i=0; i<infoIcon.length; i++) {
+    infoIcon[i].mousePressed(enlargeInfo);
+  }
+  infoButton.mousePressed(reduceInfo);
+
   freedomKeywords = loadJSON("freedom.json");
   decentralizedKeywords = loadJSON("decentralized.json");
   rightKeywords = loadJSON("right.json");
@@ -66,6 +80,9 @@ function preload() {
 
 function setup() {
   noCanvas();
+
+  infoBox.style("transition",".5s");
+  infoContainer.style("transition",".5s");
 
   freedomDiv = select("#freedomKeywords");
   freedomTitle = select("#freedomTitle");
@@ -128,6 +145,16 @@ function setup() {
   freeCreate();
 }
 
+function reduceInfo() {
+  infoBox.addClass("closedInfo");
+  infoContainer.addClass("removeElements");
+}
+
+function enlargeInfo() {
+  infoBox.removeClass("closedInfo");
+  infoContainer.removeClass("removeElements");
+}
+
 function freedomCreate() {
   for (let i = 0; i < 36; i++) {
     let wholeKeyword = freedomKeywords[i].Keyword;
@@ -139,6 +166,9 @@ function freedomCreate() {
       keyword = createDiv(splitKeyword[j]);
       keyword.parent(freedomDiv);
       keyword.addClass("word");
+      if(i>33) {
+        keyword.style("flex-grow","0");
+      }
       keyword.addClass(freedomKeywords[i].Keyword);
       thisKeywords.push(keyword);
       keyword.mouseOver(underline);
@@ -182,6 +212,9 @@ function decentralizedCreate() {
       keyword = createDiv(splitKeyword[j]);
       keyword.parent(decentralizedDiv);
       keyword.addClass("word");
+      if(i>15) {
+        keyword.style("flex-grow","0");
+      }
       keyword.addClass(decentralizedKeywords[i].Keyword);
       thisKeywords.push(keyword);
       keyword.mouseOver(underline);
@@ -222,6 +255,9 @@ function rightCreate() {
       keyword = createDiv(splitKeyword[j]);
       keyword.parent(rightDiv);
       keyword.addClass("word");
+      if(i>14) {
+        keyword.style("flex-grow","0");
+      }
       keyword.addClass(rightKeywords[i].Keyword);
       thisKeywords.push(keyword);
       keyword.mouseOver(underline);
@@ -262,6 +298,13 @@ function safeCreate() {
       keyword = createDiv(splitKeyword[j]);
       keyword.parent(safeDiv);
       keyword.addClass("word");
+      if(i>=20) {
+        keyword.style("flex-grow","0");
+      }
+      keyword.addClass(safeKeywords[i].Keyword);
+      thisKeywords.push(keyword);
+      keyword.mouseOver(underline);
+      keyword.mouseOut(unUnderline);
 
       let websites = createDiv("Keyword used by:<br>" + safeKeywords[i].Websites);
       websites.parent(keyword);
@@ -298,11 +341,31 @@ function dataCreate() {
       keyword = createDiv(splitKeyword[j]);
       keyword.parent(dataDiv);
       keyword.addClass("word");
+      if(i>=18) {
+        keyword.style("flex-grow","0");
+      }
+      keyword.addClass(dataKeywords[i].Keyword);
+      thisKeywords.push(keyword);
+      keyword.mouseOver(underline);
+      keyword.mouseOut(unUnderline);
 
       let websites = createDiv("Keyword used by:<br>" + dataKeywords[i].Websites);
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
+
+    function underline() {
+      for (k = 0; k < thisKeywords.length; k++) {
+        thisKeywords[k].toggleClass("underline");
+      }
+    }
+
+    function unUnderline() {
+      for (k = 0; k < thisKeywords.length; k++) {
+        thisKeywords[k].toggleClass("underline");
+      }
+    }
+
   }
 }
 
@@ -321,11 +384,31 @@ function alternativeCreate() {
       keyword = createDiv(splitKeyword[j]);
       keyword.parent(alternativeDiv);
       keyword.addClass("word");
+      if(i>=10) {
+        keyword.style("flex-grow","0");
+      }
+      keyword.addClass(alternativeKeywords[i].Keyword);
+      thisKeywords.push(keyword);
+      keyword.mouseOver(underline);
+      keyword.mouseOut(unUnderline);
 
       let websites = createDiv("Keyword used by:<br>" + alternativeKeywords[i].Websites);
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
+
+    function underline() {
+      for (k = 0; k < thisKeywords.length; k++) {
+        thisKeywords[k].toggleClass("underline");
+      }
+    }
+
+    function unUnderline() {
+      for (k = 0; k < thisKeywords.length; k++) {
+        thisKeywords[k].toggleClass("underline");
+      }
+    }
+
   }
 }
 
@@ -344,11 +427,28 @@ function openCreate() {
       keyword = createDiv(splitKeyword[j]);
       keyword.parent(openDiv);
       keyword.addClass("word");
+      keyword.addClass(openKeywords[i].Keyword);
+      thisKeywords.push(keyword);
+      keyword.mouseOver(underline);
+      keyword.mouseOut(unUnderline);
 
       let websites = createDiv("Keyword used by:<br>" + openKeywords[i].Websites);
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
+
+    function underline() {
+      for (k = 0; k < thisKeywords.length; k++) {
+        thisKeywords[k].toggleClass("underline");
+      }
+    }
+
+    function unUnderline() {
+      for (k = 0; k < thisKeywords.length; k++) {
+        thisKeywords[k].toggleClass("underline");
+      }
+    }
+
   }
 }
 
@@ -367,11 +467,28 @@ function advertisementCreate() {
       keyword = createDiv(splitKeyword[j]);
       keyword.parent(advertisementDiv);
       keyword.addClass("word");
+      keyword.addClass(advertisementKeywords[i].Keyword);
+      thisKeywords.push(keyword);
+      keyword.mouseOver(underline);
+      keyword.mouseOut(unUnderline);
 
       let websites = createDiv("Keyword used by:<br>" + advertisementKeywords[i].Websites);
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
+
+    function underline() {
+      for (k = 0; k < thisKeywords.length; k++) {
+        thisKeywords[k].toggleClass("underline");
+      }
+    }
+
+    function unUnderline() {
+      for (k = 0; k < thisKeywords.length; k++) {
+        thisKeywords[k].toggleClass("underline");
+      }
+    }
+
   }
 }
 
@@ -390,11 +507,31 @@ function realCreate() {
       keyword = createDiv(splitKeyword[j]);
       keyword.parent(realDiv);
       keyword.addClass("word");
+      if(i>=7) {
+        keyword.style("flex-grow","0");
+      }
+      keyword.addClass(realKeywords[i].Keyword);
+      thisKeywords.push(keyword);
+      keyword.mouseOver(underline);
+      keyword.mouseOut(unUnderline);
 
       let websites = createDiv("Keyword used by:<br>" + realKeywords[i].Websites);
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
+
+    function underline() {
+      for (k = 0; k < thisKeywords.length; k++) {
+        thisKeywords[k].toggleClass("underline");
+      }
+    }
+
+    function unUnderline() {
+      for (k = 0; k < thisKeywords.length; k++) {
+        thisKeywords[k].toggleClass("underline");
+      }
+    }
+
   }
 }
 
@@ -413,11 +550,31 @@ function freeCreate() {
       keyword = createDiv(splitKeyword[j]);
       keyword.parent(freeDiv);
       keyword.addClass("word");
+      if(i>=3) {
+        keyword.style("flex-grow","0");
+      }
+      keyword.addClass(freeKeywords[i].Keyword);
+      thisKeywords.push(keyword);
+      keyword.mouseOver(underline);
+      keyword.mouseOut(unUnderline);
 
       let websites = createDiv("Keyword used by:<br>" + freeKeywords[i].Websites);
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
+
+    function underline() {
+      for (k = 0; k < thisKeywords.length; k++) {
+        thisKeywords[k].toggleClass("underline");
+      }
+    }
+
+    function unUnderline() {
+      for (k = 0; k < thisKeywords.length; k++) {
+        thisKeywords[k].toggleClass("underline");
+      }
+    }
+
   }
 }
 
