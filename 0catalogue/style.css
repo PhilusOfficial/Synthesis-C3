@@ -73,7 +73,6 @@ html::-webkit-scrollbar {
 }
 
 .removeElements {
-
   opacity: 0;
   pointer-events: none;
 }

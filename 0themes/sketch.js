@@ -141,7 +141,7 @@ function freedomCreate() {
       keyword.addClass("word");
       keyword.addClass(freedomKeywords[i].Keyword);
       thisKeywords.push(keyword);
-      keyword.mouseOver(freedomUnderline);
+      keyword.mouseOver(underline);
       keyword.mouseOut(unUnderline);
 
       let websites = createDiv("Keyword used by:<br>" + freedomKeywords[i].Websites);
@@ -149,36 +149,18 @@ function freedomCreate() {
       websites.addClass("dropdown");
     }
 
-    function freedomUnderline() {
-      for (k=0; k<thisKeywords.length; k++) {
-        thisKeywords[k].style("border-bottom","0.2vw solid black");
+    function underline() {
+      for (k = 0; k < thisKeywords.length; k++) {
+        thisKeywords[k].toggleClass("underline");
       }
+    }
+
+    function unUnderline() {
+      for (k = 0; k < thisKeywords.length; k++) {
+        thisKeywords[k].toggleClass("underline");
       }
+    }
 
-      function unUnderline() {
-        for (k=0; k<thisKeywords.length; k++) {
-          thisKeywords[k].style("border","none");
-        }
-        }
-
-      print(thisKeywords)
-
-
-    //
-    // if (i < 35) {
-    //   counter = createDiv(splitKeyword[splitKeyword.length - 1] + ",");
-    //   counter.parent(freedomDiv);
-    //   counter.addClass("word");
-    //
-    // } else {
-    //   counter = createDiv(splitKeyword[splitKeyword.length - 1]);
-    //   counter.parent(freedomDiv);
-    //   counter.addClass("word");
-    // }
-
-    let websites2 = createDiv("Keyword used by:<br>" + freedomKeywords[i].Websites);
-    websites2.parent(counter);
-    websites2.addClass("dropdown");
   }
 }
 
@@ -195,31 +177,33 @@ function decentralizedCreate() {
     let wholeKeyword = decentralizedKeywords[i].Keyword;
     let splitKeyword = split(wholeKeyword, " ");
     let keyword;
-    for (let j = 0; j < splitKeyword.length - 1; j++) {
+    let thisKeywords = [];
+    for (let j = 0; j < splitKeyword.length; j++) {
       keyword = createDiv(splitKeyword[j]);
       keyword.parent(decentralizedDiv);
       keyword.addClass("word");
+      keyword.addClass(decentralizedKeywords[i].Keyword);
+      thisKeywords.push(keyword);
+      keyword.mouseOver(underline);
+      keyword.mouseOut(unUnderline);
 
       let websites = createDiv("Keyword used by:<br>" + decentralizedKeywords[i].Websites);
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
 
-    let counter;
-
-    if (i < 18) {
-      counter = createDiv(splitKeyword[splitKeyword.length - 1] + " x" + decentralizedKeywords[i].Number + ",");
-      counter.parent(decentralizedDiv);
-      counter.addClass("word");
-    } else {
-      counter = createDiv(splitKeyword[splitKeyword.length - 1] + " x" + decentralizedKeywords[i].Number);
-      counter.parent(decentralizedDiv);
-      counter.addClass("word");
+    function underline() {
+      for (k = 0; k < thisKeywords.length; k++) {
+        thisKeywords[k].toggleClass("underline");
+      }
     }
 
-    let websites = createDiv("Keyword used by:<br>" + decentralizedKeywords[i].Websites);
-    websites.parent(counter);
-    websites.addClass("dropdown");
+    function unUnderline() {
+      for (k = 0; k < thisKeywords.length; k++) {
+        thisKeywords[k].toggleClass("underline");
+      }
+    }
+
   }
 }
 
@@ -233,31 +217,33 @@ function rightCreate() {
     let wholeKeyword = rightKeywords[i].Keyword;
     let splitKeyword = split(wholeKeyword, " ");
     let keyword;
-    for (let j = 0; j < splitKeyword.length - 1; j++) {
+    let thisKeywords = [];
+    for (let j = 0; j < splitKeyword.length; j++) {
       keyword = createDiv(splitKeyword[j]);
       keyword.parent(rightDiv);
       keyword.addClass("word");
+      keyword.addClass(rightKeywords[i].Keyword);
+      thisKeywords.push(keyword);
+      keyword.mouseOver(underline);
+      keyword.mouseOut(unUnderline);
 
       let websites = createDiv("Keyword used by:<br>" + rightKeywords[i].Websites);
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
 
-    let counter;
-
-    if (i < 17) {
-      counter = createDiv(splitKeyword[splitKeyword.length - 1] + " x" + rightKeywords[i].Number + ",");
-      counter.parent(rightDiv);
-      counter.addClass("word");
-    } else {
-      counter = createDiv(splitKeyword[splitKeyword.length - 1] + " x" + rightKeywords[i].Number);
-      counter.parent(rightDiv);
-      counter.addClass("word");
+    function underline() {
+      for (k = 0; k < thisKeywords.length; k++) {
+        thisKeywords[k].toggleClass("underline");
+      }
     }
 
-    let websites = createDiv("Keyword used by:<br>" + rightKeywords[i].Websites);
-    websites.parent(counter);
-    websites.addClass("dropdown");
+    function unUnderline() {
+      for (k = 0; k < thisKeywords.length; k++) {
+        thisKeywords[k].toggleClass("underline");
+      }
+    }
+
   }
 }
 
@@ -271,7 +257,8 @@ function safeCreate() {
     let wholeKeyword = safeKeywords[i].Keyword;
     let splitKeyword = split(wholeKeyword, " ");
     let keyword;
-    for (let j = 0; j < splitKeyword.length - 1; j++) {
+    let thisKeywords = [];
+    for (let j = 0; j < splitKeyword.length; j++) {
       keyword = createDiv(splitKeyword[j]);
       keyword.parent(safeDiv);
       keyword.addClass("word");
@@ -281,21 +268,18 @@ function safeCreate() {
       websites.addClass("dropdown");
     }
 
-    let counter;
-
-    if (i < 22) {
-      counter = createDiv(splitKeyword[splitKeyword.length - 1] + " x" + safeKeywords[i].Number + ",");
-      counter.parent(safeDiv);
-      counter.addClass("word");
-    } else {
-      counter = createDiv(splitKeyword[splitKeyword.length - 1] + " x" + safeKeywords[i].Number);
-      counter.parent(safeDiv);
-      counter.addClass("word");
+    function underline() {
+      for (k = 0; k < thisKeywords.length; k++) {
+        thisKeywords[k].toggleClass("underline");
+      }
     }
 
-    let websites = createDiv("Keyword used by:<br>" + safeKeywords[i].Websites);
-    websites.parent(counter);
-    websites.addClass("dropdown");
+    function unUnderline() {
+      for (k = 0; k < thisKeywords.length; k++) {
+        thisKeywords[k].toggleClass("underline");
+      }
+    }
+
   }
 }
 
@@ -309,7 +293,8 @@ function dataCreate() {
     let wholeKeyword = dataKeywords[i].Keyword;
     let splitKeyword = split(wholeKeyword, " ");
     let keyword;
-    for (let j = 0; j < splitKeyword.length - 1; j++) {
+    let thisKeywords = [];
+    for (let j = 0; j < splitKeyword.length; j++) {
       keyword = createDiv(splitKeyword[j]);
       keyword.parent(dataDiv);
       keyword.addClass("word");
@@ -318,22 +303,6 @@ function dataCreate() {
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
-
-    let counter;
-
-    if (i < 20) {
-      counter = createDiv(splitKeyword[splitKeyword.length - 1] + " x" + dataKeywords[i].Number + ",");
-      counter.parent(dataDiv);
-      counter.addClass("word");
-    } else {
-      counter = createDiv(splitKeyword[splitKeyword.length - 1] + " x" + dataKeywords[i].Number);
-      counter.parent(dataDiv);
-      counter.addClass("word");
-    }
-
-    let websites = createDiv("Keyword used by:<br>" + dataKeywords[i].Websites);
-    websites.parent(counter);
-    websites.addClass("dropdown");
   }
 }
 
@@ -347,7 +316,8 @@ function alternativeCreate() {
     let wholeKeyword = alternativeKeywords[i].Keyword;
     let splitKeyword = split(wholeKeyword, " ");
     let keyword;
-    for (let j = 0; j < splitKeyword.length - 1; j++) {
+    let thisKeywords = [];
+    for (let j = 0; j < splitKeyword.length; j++) {
       keyword = createDiv(splitKeyword[j]);
       keyword.parent(alternativeDiv);
       keyword.addClass("word");
@@ -356,22 +326,6 @@ function alternativeCreate() {
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
-
-    let counter;
-
-    if (i < 12) {
-      counter = createDiv(splitKeyword[splitKeyword.length - 1] + " x" + alternativeKeywords[i].Number + ",");
-      counter.parent(alternativeDiv);
-      counter.addClass("word");
-    } else {
-      counter = createDiv(splitKeyword[splitKeyword.length - 1] + " x" + alternativeKeywords[i].Number);
-      counter.parent(alternativeDiv);
-      counter.addClass("word");
-    }
-
-    let websites = createDiv("Keyword used by:<br>" + alternativeKeywords[i].Websites);
-    websites.parent(counter);
-    websites.addClass("dropdown");
   }
 }
 
@@ -385,7 +339,8 @@ function openCreate() {
     let wholeKeyword = openKeywords[i].Keyword;
     let splitKeyword = split(wholeKeyword, " ");
     let keyword;
-    for (let j = 0; j < splitKeyword.length - 1; j++) {
+    let thisKeywords = [];
+    for (let j = 0; j < splitKeyword.length; j++) {
       keyword = createDiv(splitKeyword[j]);
       keyword.parent(openDiv);
       keyword.addClass("word");
@@ -394,22 +349,6 @@ function openCreate() {
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
-
-    let counter;
-
-    if (i < 4) {
-      counter = createDiv(splitKeyword[splitKeyword.length - 1] + " x" + openKeywords[i].Number + ",");
-      counter.parent(openDiv);
-      counter.addClass("word");
-    } else {
-      counter = createDiv(splitKeyword[splitKeyword.length - 1] + " x" + openKeywords[i].Number);
-      counter.parent(openDiv);
-      counter.addClass("word");
-    }
-
-    let websites = createDiv("Keyword used by:<br>" + openKeywords[i].Websites);
-    websites.parent(counter);
-    websites.addClass("dropdown");
   }
 }
 
@@ -423,7 +362,8 @@ function advertisementCreate() {
     let wholeKeyword = advertisementKeywords[i].Keyword;
     let splitKeyword = split(wholeKeyword, " ");
     let keyword;
-    for (let j = 0; j < splitKeyword.length - 1; j++) {
+    let thisKeywords = [];
+    for (let j = 0; j < splitKeyword.length; j++) {
       keyword = createDiv(splitKeyword[j]);
       keyword.parent(advertisementDiv);
       keyword.addClass("word");
@@ -432,22 +372,6 @@ function advertisementCreate() {
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
-
-    let counter;
-
-    if (i < 1) {
-      counter = createDiv(splitKeyword[splitKeyword.length - 1] + " x" + advertisementKeywords[i].Number + ",");
-      counter.parent(advertisementDiv);
-      counter.addClass("word");
-    } else {
-      counter = createDiv(splitKeyword[splitKeyword.length - 1] + " x" + advertisementKeywords[i].Number);
-      counter.parent(advertisementDiv);
-      counter.addClass("word");
-    }
-
-    let websites = createDiv("Keyword used by:<br>" + advertisementKeywords[i].Websites);
-    websites.parent(counter);
-    websites.addClass("dropdown");
   }
 }
 
@@ -461,7 +385,8 @@ function realCreate() {
     let wholeKeyword = realKeywords[i].Keyword;
     let splitKeyword = split(wholeKeyword, " ");
     let keyword;
-    for (let j = 0; j < splitKeyword.length - 1; j++) {
+    let thisKeywords = [];
+    for (let j = 0; j < splitKeyword.length; j++) {
       keyword = createDiv(splitKeyword[j]);
       keyword.parent(realDiv);
       keyword.addClass("word");
@@ -470,22 +395,6 @@ function realCreate() {
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
-
-    let counter;
-
-    if (i < 7) {
-      counter = createDiv(splitKeyword[splitKeyword.length - 1] + " x" + realKeywords[i].Number + ",");
-      counter.parent(realDiv);
-      counter.addClass("word");
-    } else {
-      counter = createDiv(splitKeyword[splitKeyword.length - 1] + " x" + realKeywords[i].Number);
-      counter.parent(realDiv);
-      counter.addClass("word");
-    }
-
-    let websites = createDiv("Keyword used by:<br>" + realKeywords[i].Websites);
-    websites.parent(counter);
-    websites.addClass("dropdown");
   }
 }
 
@@ -499,7 +408,8 @@ function freeCreate() {
     let wholeKeyword = freeKeywords[i].Keyword;
     let splitKeyword = split(wholeKeyword, " ");
     let keyword;
-    for (let j = 0; j < splitKeyword.length - 1; j++) {
+    let thisKeywords = [];
+    for (let j = 0; j < splitKeyword.length; j++) {
       keyword = createDiv(splitKeyword[j]);
       keyword.parent(freeDiv);
       keyword.addClass("word");
@@ -508,22 +418,6 @@ function freeCreate() {
       websites.parent(keyword);
       websites.addClass("dropdown");
     }
-
-    let counter;
-
-    if (i < 4) {
-      counter = createDiv(splitKeyword[splitKeyword.length - 1] + " x" + freeKeywords[i].Number + ",");
-      counter.parent(freeDiv);
-      counter.addClass("word");
-    } else {
-      counter = createDiv(splitKeyword[splitKeyword.length - 1] + " x" + freeKeywords[i].Number);
-      counter.parent(freeDiv);
-      counter.addClass("word");
-    }
-
-    let websites = createDiv("Keyword used by:<br>" + freeKeywords[i].Websites);
-    websites.parent(counter);
-    websites.addClass("dropdown");
   }
 }
 

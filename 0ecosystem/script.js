@@ -1,4 +1,42 @@
 
+let infoIcon;
+let infoContainer;
+let infoBox;
+let infoButton;
+
+function preload() {
+  infoIcon = select("#infoIcon")
+  infoContainer = select("#infoContainer");
+  infoBox = select("#infoBox");
+  infoButton = select("#infoButton");
+
+  infoIcon.mousePressed(enlargeInfo);
+  infoButton.mousePressed(reduceInfo);
+
+  if (getItem("firstEcosystemLoad")==false) {
+    infoBox.addClass("closedInfo");
+    infoContainer.addClass("removeElements");
+  }
+}
+
+function setup() {
+  infoBox.style("transition",".5s");
+  infoContainer.style("transition",".5s");
+}
+
+function reduceInfo() {
+  infoBox.addClass("closedInfo");
+  infoContainer.addClass("removeElements");
+  if (getItem("firstEcosystemLoad")===null) {
+    storeItem("firstEcosystemLoad", false);
+  }
+}
+
+function enlargeInfo() {
+  infoBox.removeClass("closedInfo");
+  infoContainer.removeClass("removeElements");
+}
+
 d3.html('assets/mappa.svg').then(function (newDocument) {
 
     const svg = newDocument.querySelector('svg');
@@ -31,17 +69,6 @@ d3.html('assets/mappa.svg').then(function (newDocument) {
         handleClickCategory(this)
     })
 
-    //numbers
-    const numbers = d3.selectAll("#numbers>g");
-    numbers.each(function(){
-        const classesString = d3.select(this).attr("id").split("_").join(" ")
-        d3.select(this).attr("class", classesString)
-    })
-    numbers.style("opacity",0)
-    numbers.on("click", function(){
-        handleClickCategory(this)
-    });
-
     //bottone
     const knowmore = d3.select("#rettangolino");
 
@@ -61,13 +88,6 @@ d3.html('assets/mappa.svg').then(function (newDocument) {
         categories.style("opacity", 0.3)
         legend.attr("fill", "#d8d8d8")
         knowmore.attr("fill", "#f9f8f7")
-        numbers.style("opacity",0)
-        const this_number = d3.select(element);
-        const arro = this_number.attr("id").split("_")
-        arro.forEach(function(name_class){
-            //.decentralized
-            d3.select("#numbers").select("."+name_class).style("opacity",1)
-        })
         d3.select(element).style("opacity",1)
         const this_application = d3.select(element);
         const arr = this_application.attr("id").split("_")
@@ -81,18 +101,11 @@ d3.html('assets/mappa.svg').then(function (newDocument) {
     function handleClickCategory(element) {
         applications.style("opacity", 0.3)
         categories.style("opacity", 0.3)
-        numbers.style("opacity",0)
         const this_element=d3.select(element)
         this_element.style("opacity",1)
         const new_color=this_element.select("circle").attr("fill")
         knowmore.attr("fill", new_color)
         legend.attr("fill", new_color)
-        const this_number = d3.select(element);
-        const arro = this_number.attr("id").split("_")
-        arro.forEach(function(name_class){
-            //.decentralized
-            d3.select("#numbers").select("."+name_class).style("opacity",1)
-        })
         const this_application = d3.select(element);
         const arr = this_application.attr("id").split("_")
         arr.forEach(function(name_class){
@@ -107,12 +120,10 @@ d3.html('assets/mappa.svg').then(function (newDocument) {
     d3.select('#background').on('click', function(){
         applications.style('opacity',1)
         categories.style("opacity", 1)
-        numbers.style("opacity",0)
         const this_back=d3.select("#background")
         const old_color=this_back.select("rect").attr("fill")
         knowmore.attr("fill", old_color)
         const legend_back=d3.selectAll("#bob>circle")
-        console.log(legend_back.attr("fill", "#d8d8d8"))
         const old_legend=legend_back.attr("fill", "#d8d8d8")
         legend.attr("fill", "#d8d8d8")
       });

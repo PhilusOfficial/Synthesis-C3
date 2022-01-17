@@ -86,6 +86,11 @@ body {
     width: 100%;
   }
 
+  .underline {
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
   /* ------------------------------------------------------------------------------------------ */
 
   #catTitle {
@@ -176,6 +181,7 @@ body {
   }
 
   .dropdown {
+    font-weight: 300;
     font-size: 1.6vw;
     cursor: default;
     line-height: normal;

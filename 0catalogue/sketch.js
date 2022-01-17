@@ -64,7 +64,7 @@ function preload() {
   infoIcon.mousePressed(enlargeInfo);
   infoButton.mousePressed(reduceInfo);
 
-  if (getItem("firstPageLoad")==false) {
+  if (getItem("firstCatalogueLoad")==false) {
     infoBox.addClass("closedInfo");
     infoContainer.addClass("removeElements");
   }
@@ -119,8 +119,8 @@ function draw() {}
 function reduceInfo() {
   infoBox.addClass("closedInfo");
   infoContainer.addClass("removeElements");
-  if (getItem("firstPageLoad")===null) {
-    storeItem("firstPageLoad", false);
+  if (getItem("firstCatalogueLoad")===null) {
+    storeItem("firstCatalogueLoad", false);
   }
 }
 

@@ -31,9 +31,16 @@ let colors = ["6eb1f4", "d66b6b", "bcdcf7", "ffc5e5", "e8b6ff", "c3e264", "a698f
 var words = ["authenticity", "free", "speech ", "no", "analytics", "privacy", "you do you", "your thinking", "no spying", "end-to-end encryption", "fair", "community owned", "love", "decentralization", "meaningful connection", "off", "not approved offensive behaviour", "privately organized", "open platform", "free flow of information", "(vs) censorship", "authentic human connection", "free thought", "the", "telegram", "app.net", "ownership and control of your data", "uncesored self expression", "secure messaging", "healthy user experience", "indipendent", "grid", "(vs) politically censorship", "authentic expression", "(vs) sell our information", "a place for you", "freedom of expression and association", "no premium costs", "open, free, and honest global conversation", "self-hosted", "share positive", "youtube", "(vs) feed that mines your attention", "blockchain technology", "connecting free and indepent community", "don't break any laws", "expression matters", "no stealing your data", "complexity", "(vs) cancel culture", "empowers you to protect your identity", "flourish express ideas freely", "interconnected", "more private than Facebook", "no cookies", "(vs) decentralized platform", "(vs) limited state/removed/self censored videos", "ethereum blockchain", "no tracking", "open", "personal data", "respectfull", "safe space", "twitter", "users accountable", "your friends for real", "own and control personal information", "express yourself openly", "decentralized network of indipendent operated servers", "(vs) censor our speech", "common webserver techonology", "for humans not algorithms", "instagram", "open conversation", "politically unbiased", "own your conversation", "(vs) survaillance", "can't delete/moderate/block/ban", "decentralized identity", "distributed", "not for sale", "(vs) addiction", "build real-world connection", "matrix", "right to privacy", "sense of belonging", "(vs) platform fees", "code of cunduction", "groupme", "have their voices heard", "no fear of being deplatformed", "take back your data", "you own your data", "self expression", "free to express", "gnu social", "freedom", "data stored forever on a distributed data source", "(vs) selling data", "creative freedom", "fairness", "true ownership of online identity", "whatsapp", "(vs) censor", "back in your hands", "(vs) digital survaillance", "decentralized", "individual liberty", "no stealing your data", "privately", "secure space", "safely", "(vs) violating privacy"];
 
 function setup() {
-  if (getItem("firstPageLoad")==false) {
-    storeItem("firstPageLoad", null);
+  if (getItem("firstCatalogueLoad")==false) {
+    storeItem("firstCatalogueLoad", null);
   }
+  if (getItem("firstEcosystemLoad")==false) {
+    storeItem("firstEcosystemLoad", null);
+  }
+  if (getItem("firstThemesLoad")==false) {
+    storeItem("firstThemesLoad", null);
+  }
+
   noCanvas();
   finalTitleContainer = select(".finalTitleContainer");
   finalTitle = select(".finalTitle");
