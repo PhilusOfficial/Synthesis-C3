@@ -40,6 +40,7 @@ function enlargeInfo() {
 d3.html('assets/mappa.svg').then(function (newDocument) {
 
     const svg = newDocument.querySelector('svg');
+
     // append the svg node to our webpage
     document.querySelector('#network-container').appendChild(svg);
 
@@ -73,7 +74,7 @@ d3.html('assets/mappa.svg').then(function (newDocument) {
     const knowmore = d3.select("#rettangolino");
 
     knowmore.on("click", function () {
-        location.href = "../0themes/themes.html"
+        location.href = "https://www.tripadvisor.it/Restaurant_Review-g187849-d16648315-Reviews-Centoventicinque-Milan_Lombardy.html"
     })
     knowmore.on("mouseover", function(){
         d3.select(this).style("cursor", "pointer")

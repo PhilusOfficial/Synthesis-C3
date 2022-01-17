@@ -104,7 +104,27 @@ a:hover {
 }
 
 #restart:hover {
-  background-color: grey;
+  background-color: #d8d8d8;
+}
+
+#goThemes {
+  top: 49vw;
+  right:15vw;
+  position: absolute;
+  padding: 0.6vh 1.2vh;
+  font-weight: 300;
+  font-style: normal;
+  font-family: input-mono;
+  font-size: 1vw;
+  border-radius: 3vw;
+  background-color: white;
+  border: 0.1vw solid black;
+  outline: none;
+  cursor:pointer;
+}
+
+#goThemes:hover {
+  background-color: #d8d8d8;
 }
 
 #navigo {

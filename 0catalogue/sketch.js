@@ -48,6 +48,7 @@ let realBox;
 let freeBox;
 let uncategorizedBox;
 
+let noFound;
 let infoIcon;
 let infoContainer;
 let infoBox;
@@ -56,6 +57,7 @@ let infoButton;
 let favicons = [];
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 function preload() {
+  noFound = select("#noFound");
   infoIcon = select("#infoIcon")
   infoContainer = select("#infoContainer");
   infoBox = select("#infoBox");
@@ -576,6 +578,7 @@ function toggleColors() {
 //-----------------------------------------------------------------------------------------------------------------------------------------------------
 
 function rearrangeSelection() {
+  let websitesCount=0;
   removeElements();
   let currentPosX;
   let indexX = 0;
@@ -603,6 +606,7 @@ function rearrangeSelection() {
       thisCategories.push(allWebsites[i].Category6);
     }
     if (selected.every(r => thisCategories.includes(r))) {
+      websitesCount++;
       let keywordsLength = allWebsites[i].Keywords.length;
       currentPosY = yPos[indexY];
       indexY++;
@@ -696,4 +700,7 @@ function rearrangeSelection() {
     }
   }
   toggleColors();
+  if (websitesCount==0){
+    noFound.style("opacity","1");
+  } else {noFound.style("opacity","0");}
 }

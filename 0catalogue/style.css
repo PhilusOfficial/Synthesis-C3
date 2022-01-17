@@ -176,6 +176,17 @@ a {
   font-size: 0.7vw;
 }
 
+#noFound {
+  pointer-events: painted;
+  opacity:0;
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  font-size: 3vh;
+  transform: translate(-50%, -50%);
+  transition: .5s;
+}
+
 /*--------------------------------------------------------------------------*/
 #freedom:hover {
   background-color: #6eb1f4;
