@@ -13,6 +13,7 @@ html::-webkit-scrollbar {
   display: none;
 }
 
+
 #infoIcon {
   position: fixed;
   top:1.2vw;
